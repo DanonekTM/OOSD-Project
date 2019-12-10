@@ -21,7 +21,6 @@ public class DatabaseController
 			
 			LOGGER.log(Level.INFO, "Connection Established.");
 			this.setup();
-				
 		}
 		catch (SQLException e) 
 		{
@@ -56,5 +55,4 @@ public class DatabaseController
 			LOGGER.log(Level.INFO, rs.getInt("id") +  "\t" + rs.getString("name"));
 		}
 	}
-	
 }
