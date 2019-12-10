@@ -9,13 +9,13 @@ import java.util.logging.*;
 
 import danonek.Config;
  
-public class Database 
+public class DatabaseController 
 {
 	private static Logger LOGGER = Logger.getGlobal();
 	
-    public Database()
+    public DatabaseController()
     {
-        try 
+        try
         {
             Config.CONNECTION = DriverManager.getConnection(Config.DB_PATH);
             
@@ -53,7 +53,7 @@ public class Database
 			
 		while (rs.next()) 
 		{
-			LOGGER.log(Level.INFO, rs.getInt("id") +  "\t" + rs.getString("name") + "\t" + rs.getDouble("capacity"));
+			LOGGER.log(Level.INFO, rs.getInt("id") +  "\t" + rs.getString("name"));
 		}
     }
     
