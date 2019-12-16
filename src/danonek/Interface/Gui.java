@@ -15,7 +15,7 @@ public class Gui
     //Creating the Frame
     JFrame frame = new JFrame("Chat Frame");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(400, 400);
+    frame.setSize(600, 800);
 
     //Creating the MenuBar and adding components
     JMenuBar mb = new JMenuBar();
@@ -32,13 +32,18 @@ public class Gui
     JPanel panel = new JPanel(); // the panel is not visible in output
     JLabel label = new JLabel("Enter Text");
     JTextField tf = new JTextField(10); // accepts upto 10 characters
-    JButton send = new JButton("Send");
-    JButton reset = new JButton("Reset");
+    JButton create = new JButton("Create");
+    JButton retrieve = new JButton("Retrieve");
+    JButton update = new JButton("Update");
+    JButton reset = new JButton("delete");
     panel.add(label); // Components Added using Flow Layout
     panel.add(label); // Components Added using Flow Layout
     panel.add(tf);
-    panel.add(send);
+    panel.add(create);
+    panel.add(retrieve);
+    panel.add(update);
     panel.add(reset);
+
 
     // Text Area at the Center
     JTextArea ta = new JTextArea();
