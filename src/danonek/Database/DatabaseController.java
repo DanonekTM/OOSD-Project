@@ -1,6 +1,5 @@
 package danonek.Database;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +11,10 @@ import danonek.Config;
 public class DatabaseController 
 {
 	private static Logger LOGGER = Logger.getGlobal();
+	private Add Add = new Add();
+	private Get Get = new Get();
+	private Delete Delete = new Delete();
+	private Update Update = new Update();
 	
 	public DatabaseController()
 	{
@@ -34,7 +37,7 @@ public class DatabaseController
 		statement.setQueryTimeout(30);
 
 		statement.executeUpdate("DROP TABLE IF EXISTS person");
-		statement.executeUpdate("CREATE TABLE person (id INTEGER, name STRING)");
+		statement.executeUpdate("CREATE TABLE person (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
 		
 		LOGGER.log(Level.INFO, "DB created.");
 		
@@ -54,5 +57,10 @@ public class DatabaseController
 		{
 			LOGGER.log(Level.INFO, rs.getInt("id") +  "\t" + rs.getString("name"));
 		}
+	}
+	
+	public void insertPerson(String name)
+	{
+		Add.addPerson(name);
 	}
 }
