@@ -13,7 +13,7 @@ public class Gui
     public static void main(String args[]) {
     	
     //Creating the Frame
-    JFrame frame = new JFrame("Chat Frame");
+    JFrame frame = new JFrame("Customer Invoice");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(600, 800);
 
