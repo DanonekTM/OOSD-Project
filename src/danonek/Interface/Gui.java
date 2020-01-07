@@ -55,6 +55,5 @@ public class Gui
     frame.setVisible(true);
 
 
-
+    }
 	 }//body
-}//class
