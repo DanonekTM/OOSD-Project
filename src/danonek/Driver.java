@@ -9,6 +9,5 @@ public class Driver
 	{
 		DatabaseController db = new DatabaseController();
 		Gui gui = new Gui();
-		
 	}
 }
