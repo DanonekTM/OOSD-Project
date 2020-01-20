@@ -1,24 +1,26 @@
 package danonek.Database;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 import danonek.Config;
 
 public class Delete 
 {
-	public void deletePerson(int id)
+	public void deletePersonById(int id)
 	{
-		String sql = "INSERT INTO person (name) VALUES (?)";
+		String sql = "DELETE FROM person WHERE id = ?";
 		 
-		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		try (Connection conn = Config.CONNECTION; PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } 
-		catch (SQLException e) 
+		catch (SQLException e)
 		{
-            System.out.println(e.getMessage());
+			Config.LOGGER.log(Level.INFO, e.getMessage());
         }
 	}
 }

@@ -10,7 +10,6 @@ import danonek.Config;
 
 public class DatabaseController 
 {
-	private static Logger LOGGER = Logger.getGlobal();
 	private Add Add = new Add();
 	private Get Get = new Get();
 	private Delete Delete = new Delete();
@@ -22,12 +21,12 @@ public class DatabaseController
 		{
 			Config.CONNECTION = DriverManager.getConnection(Config.DB_PATH);
 			
-			LOGGER.log(Level.INFO, "Connection Established.");
+			Config.LOGGER.log(Level.INFO, "Connection Established.");
 			this.setup();
 		}
-		catch (SQLException e) 
+		catch (SQLException e)
 		{
-			LOGGER.log(Level.INFO, e.getMessage());
+			Config.LOGGER.log(Level.INFO, e.getMessage());
 		}
 	}
 	
@@ -39,28 +38,21 @@ public class DatabaseController
 		statement.executeUpdate("DROP TABLE IF EXISTS person");
 		statement.executeUpdate("CREATE TABLE person (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
 		
-		LOGGER.log(Level.INFO, "DB created.");
-		
-		this.selectAll();
+		Config.LOGGER.log(Level.INFO, "DB created.");
 	}
 	
-	public void selectAll() throws SQLException
-	{
-		LOGGER.log(Level.INFO, "Gonna select from DB.");
-		
-		String sql = "SELECT id, name FROM person";
-		
-		Statement stmt = Config.CONNECTION.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
-			
-		while (rs.next()) 
-		{
-			LOGGER.log(Level.INFO, rs.getInt("id") +  "\t" + rs.getString("name"));
-		}
-	}
-	
-	public void insertPerson(String name)
+	public void addPerson(String name)
 	{
 		Add.addPerson(name);
+	}
+	
+	public String getPersonNameById(int id)
+	{
+		return Get.getPersonNameById(id);
+	}
+	
+	public void deletePersonById(int id)
+	{
+		Delete.deletePersonById(id);
 	}
 }

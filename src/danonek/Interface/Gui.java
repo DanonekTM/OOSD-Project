@@ -13,7 +13,7 @@ public class Gui
 	public Gui()
 	{
 	    //Creating the Frame
-	    JFrame frame = new JFrame("Chat Frame");
+	    JFrame frame = new JFrame("Test Frame");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setSize(600, 800);
 	

@@ -1,24 +1,29 @@
 package danonek.Database;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 import danonek.Config;
 
 public class Get
 {
-	public void getPerson(int id)
-	{
-		String sql = "INSERT INTO person (name) VALUES (?)";
-		 
-		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+	public String getPersonNameById(int id)
+	{		
+		String sql = "SELECT name FROM person WHERE id = ?";
+		
+		try (Connection conn = Config.CONNECTION; PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
-            pstmt.setInt(1, id);
-            pstmt.executeUpdate();
-        } 
-		catch (SQLException e) 
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			return rs.getString(Config.name);
+		}
+		catch (SQLException e)
 		{
-            System.out.println(e.getMessage());
-        }
+			Config.LOGGER.log(Level.INFO, e.getMessage());
+		}
+		return null;
 	}
 }
