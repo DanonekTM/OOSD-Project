@@ -7,13 +7,14 @@ import danonek.Config;
 
 public class Update 
 {
-	public void updatePerson(String name)
+	public void updatePersonNameById(int id, String name)
 	{
-		String sql = "INSERT INTO person (name) VALUES (?)";
+		String sql = "UPDATE person SET name = ? WHERE id = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
-            pstmt.setString(1, name);
+			pstmt.setString(1, name);
+            pstmt.setInt(2, id);
             pstmt.executeUpdate();
         } 
 		catch (SQLException e) 

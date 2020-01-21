@@ -1,7 +1,6 @@
 package danonek.Database;
 
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.*;
@@ -49,6 +48,11 @@ public class DatabaseController
 	public String getPersonNameById(int id)
 	{
 		return Get.getPersonNameById(id);
+	}
+	
+	public void updatePersonNameById(int id, String name)
+	{
+		Update.updatePersonNameById(id, name);
 	}
 	
 	public void deletePersonById(int id)

@@ -1,6 +1,5 @@
 package danonek.Database;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ public class Get
 	{		
 		String sql = "SELECT name FROM person WHERE id = ?";
 		
-		try (Connection conn = Config.CONNECTION; PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
