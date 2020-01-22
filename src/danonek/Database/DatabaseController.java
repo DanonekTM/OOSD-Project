@@ -32,7 +32,6 @@ public class DatabaseController
 	public void setup() throws SQLException
 	{
 		Statement statement = Config.CONNECTION.createStatement();
-		statement.setQueryTimeout(30);
 
 		statement.executeUpdate("DROP TABLE IF EXISTS person");
 		statement.executeUpdate("CREATE TABLE person (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");

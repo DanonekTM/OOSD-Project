@@ -14,12 +14,12 @@ public class Delete
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
-            pstmt.setInt(1, id);
-            pstmt.executeUpdate();
-        } 
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} 
 		catch (SQLException e)
 		{
 			Config.LOGGER.log(Level.INFO, e.getMessage());
-        }
+		}
 	}
 }

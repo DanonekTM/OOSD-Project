@@ -13,12 +13,12 @@ public class Add
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
-            pstmt.setString(1, name);
-            pstmt.executeUpdate();
-        }
+			pstmt.setString(1, name);
+			pstmt.executeUpdate();
+		}
 		catch (SQLException e) 
 		{
-            System.out.println(e.getMessage());
-        }
+			System.out.println(e.getMessage());
+		}
 	}
 }
