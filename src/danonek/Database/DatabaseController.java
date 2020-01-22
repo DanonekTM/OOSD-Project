@@ -38,15 +38,15 @@ public class DatabaseController
 			statement.executeUpdate("DROP TABLE IF EXISTS " + table);
 		}
 		
-		String createCustomer = "CREATE TABLE " + Config.tables[0] + " (" + Config.customer_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.customer_name + " STRING, " + Config.customer_surname + " STRING)";
-		String createInvoice = "CREATE TABLE " + Config.tables[1] + " (" + Config.invoice_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.customer_id + " INTEGER, " + Config.product_id + " INTEGER, " + Config.product_name + " STRING)";
+		String createCustomer = "CREATE TABLE " + Config.tables[0] + " (" + Config.customer_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.customer_name + " STRING, " + Config.customer_surname + " STRING, " + Config.customer_address + " STRING, " + Config.customer_phone + " STRING)";
+		String createInvoice = "CREATE TABLE " + Config.tables[1] + " (" + Config.invoice_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.customer_id + " INTEGER, " + Config.product_id + " INTEGER, " + Config.product_name + " STRING, " + Config.product_quantity + " INTEGER)";
 		String createProduct = "CREATE TABLE " + Config.tables[2] + " (" + Config.product_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.product_name + " STRING, " + Config.product_description + ", " + Config.product_quantity + " INTEGER, " + Config.product_unit_cost + " REAL)";
 
 		statement.executeUpdate(createCustomer);
 		statement.executeUpdate(createInvoice);
 		statement.executeUpdate(createProduct);
 			
-		Config.LOGGER.log(Level.INFO, "DB created.");
+		Config.LOGGER.log(Level.INFO, "DB created.");		
 	}
 
 	/*

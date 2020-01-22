@@ -17,6 +17,8 @@ public class Config
 	public static final String customer_id = "customer_id";
 	public static final String customer_name = "customer_name";
 	public static final String customer_surname = "customer_surname";
+	public static final String customer_address = "customer_address";
+	public static final String customer_phone = "customer_phone";
 	
 	// Invoice Database Columns
 	public static final String invoice_id = "invoice_id";
