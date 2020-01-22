@@ -1,6 +1,5 @@
 package danonek.Interface;
 import javax.swing.*;
-import java.awt.*;
 
 public class Gui 
 {

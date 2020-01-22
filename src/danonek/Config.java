@@ -3,7 +3,7 @@ package danonek;
 import java.sql.Connection;
 import java.util.logging.Logger;
 
-public class Config 
+public class Config
 {
 	// Variables
 	public static Connection CONNECTION = null;
