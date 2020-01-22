@@ -1,12 +1,6 @@
 package danonek.Interface;
 import javax.swing.*;
 import java.awt.*;
-/*� Front end GUI
-� Should provide CRUD (create, retrieve, update,delete) operations
-on the database
-� Should demonstrate use of a variety of Swing components (Buttons, Textboxes, etc.)*/
-
-
 
 public class Gui 
 {

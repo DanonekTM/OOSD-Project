@@ -7,8 +7,8 @@ public class Config
 {
 	// Variables
 	public static Connection CONNECTION = null;
-	public static String DB_PATH = "jdbc:sqlite:project.db";
-	public static Logger LOGGER = Logger.getGlobal();
+	public static final String DB_PATH = "jdbc:sqlite:project.db";
+	public static final Logger LOGGER = Logger.getGlobal();
 	
 	// Database Tables
 	public static final String tables[] = {"customer", "invoice", "product"};

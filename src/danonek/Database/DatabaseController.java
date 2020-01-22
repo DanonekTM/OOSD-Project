@@ -126,4 +126,9 @@ public class DatabaseController
 	{
 		Update.updateProductNameById(id, name);
 	}
+	
+	public void updateProductQuantityById(int id, int quantity)
+	{
+		Update.updateProductQuantityById(id, quantity);
+	}
 }
