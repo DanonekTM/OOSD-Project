@@ -45,7 +45,7 @@ public class DatabaseController
 		statement.executeUpdate(createCustomer);
 		statement.executeUpdate(createInvoice);
 		statement.executeUpdate(createProduct);
-		
+			
 		Config.LOGGER.log(Level.INFO, "DB created.");
 	}
 
@@ -57,9 +57,14 @@ public class DatabaseController
 		/_/   \_\__,_|\__,_|
 	*/
 
-	public void addPerson(String name)
+	public void addCustomer(String name, String surname)
 	{
-		Add.addPerson(name);
+		Add.addCustomer(name, surname);
+	}
+	
+	public void addProduct(String name, String description, int quantity, double cost)
+	{
+		Add.addProduct(name, description, quantity, cost);
 	}
 
 	/*
@@ -70,9 +75,14 @@ public class DatabaseController
 		|____/ \___|_|\___|\__\___|
 	*/
 
-	public void deletePersonById(int id)
+	public void deleteCustomerById(int id)
 	{
-		Delete.deletePersonById(id);
+		Delete.deleteCustomerById(id);
+	}
+	
+	public void deleteProductById(int id)
+	{
+		Delete.deleteCustomerById(id);
 	}
 
 	/*
@@ -83,9 +93,19 @@ public class DatabaseController
 		 \____|\___|\__|
 	*/
 
-	public String getPersonNameById(int id)
+	public String getCustomerNameById(int id)
 	{
-		return Get.getPersonNameById(id);
+		return Get.getCustomerNameById(id);
+	}
+	
+	public String getCustomerSurnameById(int id)
+	{
+		return Get.getCustomerSurnameById(id);
+	}
+	
+	public String getProductNameById(int id)
+	{
+		return Get.getProductNameById(id);
 	}
 
 	/*
@@ -97,8 +117,13 @@ public class DatabaseController
 		      |_|
 	*/
 
-	public void updatePersonNameById(int id, String name)
+	public void updateCustomerNameById(int id, String name)
 	{
-		Update.updatePersonNameById(id, name);
+		Update.updateCustomerNameById(id, name);
+	}
+	
+	public void updateProductNameById(int id, String name)
+	{
+		Update.updateProductNameById(id, name);
 	}
 }
