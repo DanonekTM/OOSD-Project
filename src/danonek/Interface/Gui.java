@@ -109,13 +109,6 @@ public class Gui
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		frame.getContentPane().add(toolBar, "4, 2, 6, 1");
-		
-		JCheckBox checkBox = new JCheckBox("");
-		toolBar.add(checkBox);
-		
 		//Labels and text fields 
 		
 		JLabel CustomerNameLabel = new JLabel("Customer Name :");
@@ -180,6 +173,28 @@ public class Gui
 		JButton btnDel = new JButton("DELETE");
 		btnDel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnpanel.add(btnDel);
+		
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		JButton btnNewButton = new JButton("Customer Database");
+		btnNewButton.setForeground(new Color(0, 0, 128));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		menuBar.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Product Database");
+		btnNewButton_1.setForeground(new Color(0, 0, 139));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		menuBar.add(btnNewButton_1);
+		
+		//Action Listeners
+		
+		JButton.addActionListener(new ActionListener()
+				{
+			
+				});
+				
+
 
 	
 		frame.setVisible(true);

@@ -8,6 +8,6 @@ public class Driver
 	public static void main(String[] args)
 	{
 		DatabaseController db = new DatabaseController();
-		//Gui gui = new Gui();
+		Gui gui = new Gui();
 	}
 }
