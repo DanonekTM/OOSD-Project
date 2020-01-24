@@ -1,6 +1,7 @@
 package danonek.Database;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.*;
@@ -47,6 +48,9 @@ public class DatabaseController
 		statement.executeUpdate(createProduct);
 			
 		Config.LOGGER.log(Level.INFO, "DB created.");		
+		addCustomer("TEST1", "LOL1");
+		addCustomer("TEST2", "LOL2");
+		getAllFromCustomer();
 	}
 
 	/*
@@ -106,6 +110,11 @@ public class DatabaseController
 	public String getProductNameById(int id)
 	{
 		return Get.getProductNameById(id);
+	}
+	
+	public void getAllFromCustomer()
+	{
+		Get.getAllFromCustomer();
 	}
 
 	/*
