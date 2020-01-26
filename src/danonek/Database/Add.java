@@ -8,14 +8,16 @@ import danonek.Config;
 
 public class Add 
 {	
-	public void addCustomer(String name, String surname)
+	public void addCustomer(String name, String surname, String address, String phone)
 	{
-		String sql = "INSERT INTO " + Config.tables[0] + " (" + Config.customer_name + ", " + Config.customer_surname + ") VALUES (?, ?)";
+		String sql = "INSERT INTO " + Config.tables[0] + " (" + Config.customer_name + ", " + Config.customer_surname + ", " + Config.customer_address + ", " + Config.customer_phone + ") VALUES (?, ?, ?, ?)";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setString(1, name);
 			pstmt.setString(2, surname);
+			pstmt.setString(3, address);
+			pstmt.setString(4, phone);
 			pstmt.executeUpdate();
 		}
 		catch (SQLException e) 

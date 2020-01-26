@@ -61,22 +61,11 @@ public class Get
 		return null;
 	}
 	
-	public void getAllFromCustomer()
-	{	
+	public ResultSet getAllFromCustomer() throws SQLException
+	{
 		String sql = "SELECT * FROM " + Config.tables[0];
-		
-		try (Statement stmt = Config.CONNECTION.createStatement()) 
-		{
-	        ResultSet rs = stmt.executeQuery(sql);
-	        while (rs.next())
-	        {
-	        	System.out.println("NAME " + rs.getString(Config.customer_name));
-	        	System.out.println("SURNAME " + rs.getString(Config.customer_surname));
-	        }
-		}
-		catch (SQLException e)
-		{
-			Config.LOGGER.log(Level.INFO, e.getMessage());
-		}
+		Statement stmt = Config.CONNECTION.createStatement();
+		ResultSet rs = stmt.executeQuery(sql); 
+		return rs;
 	}
 }

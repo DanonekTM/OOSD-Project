@@ -2,6 +2,7 @@ package danonek.Database;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.*;
@@ -47,10 +48,19 @@ public class DatabaseController
 		statement.executeUpdate(createInvoice);
 		statement.executeUpdate(createProduct);
 			
-		Config.LOGGER.log(Level.INFO, "DB created.");		
-		addCustomer("TEST1", "LOL1");
-		addCustomer("TEST2", "LOL2");
-		getAllFromCustomer();
+		Config.LOGGER.log(Level.INFO, "DB created.");
+		addCustomer("TEST1 NAME", "TEST1 SURNAME", "TEST1 ADD", "TEST1 PHONE");
+		addCustomer("TEST2 NAME", "TEST2 SURNAME", "TEST2 ADD", "TEST2 PHONE");
+		
+		ResultSet rs = getAllFromCustomer();
+		while (rs.next())
+		{
+			System.out.println("ID: " + rs.getString(Config.customer_id));
+			System.out.println("NAME: " + rs.getString(Config.customer_name));
+			System.out.println("SURNAME: " + rs.getString(Config.customer_surname));
+			System.out.println("ADDRESS: " + rs.getString(Config.customer_address));
+			System.out.println("PHONE: " + rs.getString(Config.customer_phone));
+		}
 	}
 
 	/*
@@ -61,9 +71,9 @@ public class DatabaseController
 		/_/   \_\__,_|\__,_|
 	*/
 
-	public void addCustomer(String name, String surname)
+	public void addCustomer(String name, String surname, String address, String phone)
 	{
-		Add.addCustomer(name, surname);
+		Add.addCustomer(name, surname, address, phone);
 	}
 	
 	public void addProduct(String name, String description, int quantity, double cost)
@@ -112,9 +122,9 @@ public class DatabaseController
 		return Get.getProductNameById(id);
 	}
 	
-	public void getAllFromCustomer()
+	public ResultSet getAllFromCustomer() throws SQLException
 	{
-		Get.getAllFromCustomer();
+		return Get.getAllFromCustomer();
 	}
 
 	/*
