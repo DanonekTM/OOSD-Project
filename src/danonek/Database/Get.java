@@ -68,8 +68,7 @@ public class Get
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			return rs;
+			return pstmt.executeQuery();
 		}
 		catch (SQLException e)
 		{
@@ -85,8 +84,7 @@ public class Get
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			return rs;
+			return pstmt.executeQuery(sql);
 		}
 		catch (SQLException e)
 		{
@@ -99,23 +97,20 @@ public class Get
 	{
 		String sql = "SELECT * FROM " + Config.tables[0];
 		Statement stmt = Config.CONNECTION.createStatement();
-		ResultSet rs = stmt.executeQuery(sql); 
-		return rs;
+		return stmt.executeQuery(sql);
 	}
 	
 	public ResultSet getAllFromInvoice() throws SQLException
 	{
 		String sql = "SELECT * FROM " + Config.tables[1];
 		Statement stmt = Config.CONNECTION.createStatement();
-		ResultSet rs = stmt.executeQuery(sql); 
-		return rs;
+		return stmt.executeQuery(sql);
 	}
 	
 	public ResultSet getAllFromProduct() throws SQLException
 	{
 		String sql = "SELECT * FROM " + Config.tables[2];
 		Statement stmt = Config.CONNECTION.createStatement();
-		ResultSet rs = stmt.executeQuery(sql); 
-		return rs;
+		return stmt.executeQuery(sql);
 	}
 }
