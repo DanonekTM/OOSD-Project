@@ -186,13 +186,6 @@ public class Gui
 		btnNewButton_1.setForeground(new Color(0, 0, 139));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		menuBar.add(btnNewButton_1);
-		
-		//Action Listeners
-		
-		JButton.addActionListener(new ActionListener()
-				{
-			
-				});
 				
 
 
