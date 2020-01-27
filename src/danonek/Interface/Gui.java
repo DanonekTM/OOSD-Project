@@ -2,6 +2,8 @@ package danonek.Interface;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -10,106 +12,110 @@ import com.jgoodies.forms.layout.FormSpecs;
 
 public class Gui 
 {
+	// Variables
+	
 	public Gui()
 	{
-		//Creating the Frame
+		// Creating the Frame
 		JFrame frame = new JFrame("Invoice Managment");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
-		frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
-				
-		//dividing the mainframe
-				
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(60dlu;default):grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("max(15dlu;default):grow"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
+		frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] 
+		{
+			// Dividing the mainframe
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			ColumnSpec.decode("max(60dlu;default):grow"),
+			FormSpecs.RELATED_GAP_COLSPEC,
+			ColumnSpec.decode("default:grow"),
+			FormSpecs.RELATED_GAP_COLSPEC,
+			ColumnSpec.decode("default:grow"),
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			ColumnSpec.decode("default:grow"),
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+			FormSpecs.RELATED_GAP_COLSPEC,
+			FormSpecs.DEFAULT_COLSPEC,
+		},
+		new RowSpec[] 
+		{
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			RowSpec.decode("default:grow"),
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			RowSpec.decode("default:grow"),
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			RowSpec.decode("max(15dlu;default):grow"),
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+			FormSpecs.RELATED_GAP_ROWSPEC,
+			FormSpecs.DEFAULT_ROWSPEC,
+		}));
 		
-		//Labels and text fields 
+		// Labels and text fields
 		
 		JLabel CustomerNameLabel = new JLabel("Customer Name :");
 		CustomerNameLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -153,8 +159,7 @@ public class Gui
 		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
 		frame.getContentPane().add(formattedTextField_3, "19, 16, 9, 1, fill, default");
 		
-		//buttons on panel1
-		
+		// Buttons
 		JPanel btnpanel = new JPanel();
 		frame.getContentPane().add(btnpanel, "1, 23, 34, 3, fill, fill");
 		
@@ -187,9 +192,11 @@ public class Gui
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		menuBar.add(btnNewButton_1);
 				
-
-
-	
 		frame.setVisible(true);
-	}//body
-}//class
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{  
+       // .setText("Test");  
+	}  
+}
