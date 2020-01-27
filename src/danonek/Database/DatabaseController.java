@@ -49,6 +49,9 @@ public class DatabaseController
 			
 		Config.LOGGER.log(Level.INFO, "DB created.");
 		
+		
+		addCustomer("TEST1 NAME", "TEST1 SURNAME", "TEST1 ADD", 1);
+		addCustomer("TEST2 NAME", "TEST2 SURNAME", "TEST2 ADD", 2);
 		ResultSet rs = getAllFromCustomer();
 		while (rs.next())
 		{
