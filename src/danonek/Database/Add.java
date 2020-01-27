@@ -8,7 +8,7 @@ import danonek.Config;
 
 public class Add 
 {	
-	public void addCustomer(String name, String surname, String address, String phone)
+	public void addCustomer(String name, String surname, String address, int phone)
 	{
 		String sql = "INSERT INTO " + Config.tables[0] + " (" + Config.customer_name + ", " + Config.customer_surname + ", " + Config.customer_address + ", " + Config.customer_phone + ") VALUES (?, ?, ?, ?)";
 		 
@@ -17,7 +17,7 @@ public class Add
 			pstmt.setString(1, name);
 			pstmt.setString(2, surname);
 			pstmt.setString(3, address);
-			pstmt.setString(4, phone);
+			pstmt.setInt(4, phone);
 			pstmt.executeUpdate();
 		}
 		catch (SQLException e) 
@@ -36,6 +36,24 @@ public class Add
 			pstmt.setString(2, description);
 			pstmt.setInt(3, quantity);
 			pstmt.setDouble(4, cost);
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void addInvoice(int customerId, int productId, String productName, int productQuantity)
+	{
+		String sql = "INSERT INTO " + Config.tables[1] + " (" + Config.customer_id + ", " + Config.product_id + ", " + Config.product_name + ", " + Config.product_quantity + ") VALUES (?, ?, ?, ?)";
+		
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		{
+			pstmt.setInt(1, customerId);
+			pstmt.setInt(2, productId);
+			pstmt.setString(3, productName);
+			pstmt.setInt(4, productQuantity);
 			pstmt.executeUpdate();
 		}
 		catch (SQLException e)

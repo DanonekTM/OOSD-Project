@@ -61,9 +61,59 @@ public class Get
 		return null;
 	}
 	
+	public ResultSet getInvoicesByCustomerId(int id) throws SQLException
+	{
+		String sql = "SELECT * FROM " + Config.tables[1] + " WHERE " + Config.customer_id + " = ?";
+		
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		{
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			return rs;
+		}
+		catch (SQLException e)
+		{
+			Config.LOGGER.log(Level.INFO, e.getMessage());
+		}
+		return null;
+	}
+	
+	public ResultSet getInvoicesByProductId(int id) throws SQLException
+	{
+		String sql = "SELECT * FROM " + Config.tables[1] + " WHERE " + Config.product_id + " = ?";
+		
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		{
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			return rs;
+		}
+		catch (SQLException e)
+		{
+			Config.LOGGER.log(Level.INFO, e.getMessage());
+		}
+		return null;
+	}
+	
 	public ResultSet getAllFromCustomer() throws SQLException
 	{
 		String sql = "SELECT * FROM " + Config.tables[0];
+		Statement stmt = Config.CONNECTION.createStatement();
+		ResultSet rs = stmt.executeQuery(sql); 
+		return rs;
+	}
+	
+	public ResultSet getAllFromInvoice() throws SQLException
+	{
+		String sql = "SELECT * FROM " + Config.tables[1];
+		Statement stmt = Config.CONNECTION.createStatement();
+		ResultSet rs = stmt.executeQuery(sql); 
+		return rs;
+	}
+	
+	public ResultSet getAllFromProduct() throws SQLException
+	{
+		String sql = "SELECT * FROM " + Config.tables[2];
 		Statement stmt = Config.CONNECTION.createStatement();
 		ResultSet rs = stmt.executeQuery(sql); 
 		return rs;

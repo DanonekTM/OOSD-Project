@@ -24,6 +24,22 @@ public class Update
 		}
 	}
 	
+	public void updateCustomerPhoneById(int id, int phone)
+	{
+		String sql = "UPDATE " + Config.tables[0] + " SET " + Config.customer_phone + " = ? WHERE " + Config.customer_id + " = ?";
+		 
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		{
+			pstmt.setInt(1, phone);
+			pstmt.setInt(2, id);
+			pstmt.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+			Config.LOGGER.log(Level.INFO, e.getMessage());
+		}
+	}
+	
 	public void updateProductNameById(int id, String name)
 	{
 		String sql = "UPDATE " + Config.tables[2] + " SET " + Config.product_name + " = ? WHERE " + Config.product_id + " = ?";

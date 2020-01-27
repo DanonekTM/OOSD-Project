@@ -37,4 +37,49 @@ public class Delete
 			Config.LOGGER.log(Level.INFO, e.getMessage());
 		}
 	}
+	
+	public void deleteInvoiceById(int id)
+	{
+		String sql = "DELETE FROM " + Config.tables[1] + " WHERE " + Config.invoice_id + " = ?";
+		 
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
+		{
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} 
+		catch (SQLException e)
+		{
+			Config.LOGGER.log(Level.INFO, e.getMessage());
+		}
+	}
+	
+	public void deleteInvoicesByCustomerId(int id)
+	{
+		String sql = "DELETE FROM " + Config.tables[1] + " WHERE " + Config.customer_id + " = ?";
+		 
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
+		{
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} 
+		catch (SQLException e)
+		{
+			Config.LOGGER.log(Level.INFO, e.getMessage());
+		}
+	}
+	
+	public void deleteInvoicesByProductId(int id)
+	{
+		String sql = "DELETE FROM " + Config.tables[1] + " WHERE " + Config.product_id + " = ?";
+		 
+		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
+		{
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} 
+		catch (SQLException e)
+		{
+			Config.LOGGER.log(Level.INFO, e.getMessage());
+		}
+	}
 }
