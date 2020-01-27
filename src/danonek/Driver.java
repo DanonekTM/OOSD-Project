@@ -29,7 +29,7 @@ public class Driver
 		}
 		catch (SQLException e)
 		{
-			Config.LOGGER.log(Level.WARNING, "" + e);
+			Config.LOGGER.log(Level.WARNING, e.getMessage());
 		}
 	}
 }

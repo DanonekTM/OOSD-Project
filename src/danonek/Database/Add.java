@@ -40,7 +40,7 @@ public class Add
 		}
 		catch (SQLException e)
 		{
-			System.out.println(e.getMessage());
+			Config.LOGGER.log(Level.INFO, e.getMessage());
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class Add
 		}
 		catch (SQLException e)
 		{
-			System.out.println(e.getMessage());
+			Config.LOGGER.log(Level.INFO, e.getMessage());
 		}
 	}
 }
