@@ -29,6 +29,9 @@ public class Config
 	public static final String product_description = "product_description";
 	public static final String product_quantity = "product_quantity";
 	public static final String product_unit_cost = "product_unit_cost";
+
+	// Strings For MainFrame
+	public static final String mainFrame_title = "Invoice Managment";
 	
 	public Config()
 	{
