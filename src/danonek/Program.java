@@ -24,7 +24,15 @@ public class Program
 			// Get Text & Insert To DB on click
 			caf.getBtnAddCustomer().addActionListener(a ->
 			{
-
+				String customerName = caf.getTextFieldCustomerName().getText();
+				String customerSurname = caf.getTextFieldCustomerSurname().getText();
+				String customerAddress = caf.getTextFieldCustomerAddress().getText();
+				int customerPhone = Integer.parseInt(caf.getTextFieldCustomerPhone().getText());
+				
+				System.out.println(customerName);
+				System.out.println(customerSurname);
+				System.out.println(customerAddress);
+				System.out.println(customerPhone);
 			});
 
 		});

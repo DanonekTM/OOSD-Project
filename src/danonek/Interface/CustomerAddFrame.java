@@ -83,6 +83,7 @@ public class CustomerAddFrame
 		
 		customerAddFrame.setSize(400, 400);
 		customerAddFrame.setVisible(true);
+		customerAddFrame.setResizable(false);
 		
 		Config.LOGGER.log(Level.INFO, "Created CustomerAddFrame.");
 	}

@@ -65,9 +65,13 @@ public class MainFrame
 		viewCustomerBtn.setFont(new Font(Config.FONT_NAME, Font.BOLD | Font.ITALIC, 8));
 		viewCustomerBtn.setBounds(144, 107, 100, 55);
 		mainFrame.getContentPane().add(viewCustomerBtn);
+		
+		
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setSize(300,300);
 		mainFrame.setVisible(true);
+		mainFrame.setResizable(false);
+		
 		
 		Config.LOGGER.log(Level.INFO, "Created MainFrame.");
 	}

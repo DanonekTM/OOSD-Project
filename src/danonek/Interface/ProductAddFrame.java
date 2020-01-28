@@ -80,9 +80,10 @@ public class ProductAddFrame
 		btnAddProduct.setFont(new Font(Config.FONT_NAME, Font.BOLD | Font.ITALIC, 9));
 		btnAddProduct.setBounds(120, 260, 147, 45);
 		addProductFrame.getContentPane().add(btnAddProduct);
-
+		
 		addProductFrame.setSize(400, 400);
 		addProductFrame.setVisible(true);
+		addProductFrame.setResizable(false);
 		
 		Config.LOGGER.log(Level.INFO, "Created AddProductFrame.");
 	}
