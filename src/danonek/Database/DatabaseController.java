@@ -34,14 +34,14 @@ public class DatabaseController
 	{
 		Statement statement = Config.CONNECTION.createStatement();
 
-		for (String table: Config.tables)
+		for (String table: Config.TABLES)
 		{
 			statement.executeUpdate("DROP TABLE IF EXISTS " + table);
 		}
 		
-		String createCustomer = "CREATE TABLE " + Config.tables[0] + " (" + Config.customer_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.customer_name + " STRING, " + Config.customer_surname + " STRING, " + Config.customer_address + " STRING, " + Config.customer_phone + " INT)";
-		String createInvoice = "CREATE TABLE " + Config.tables[1] + " (" + Config.invoice_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.customer_id + " INTEGER, " + Config.product_id + " INTEGER, " + Config.product_name + " STRING, " + Config.product_quantity + " INTEGER)";
-		String createProduct = "CREATE TABLE " + Config.tables[2] + " (" + Config.product_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.product_name + " STRING, " + Config.product_description + " STRING, " + Config.product_quantity + " INTEGER, " + Config.product_unit_cost + " REAL)";
+		String createCustomer = "CREATE TABLE " + Config.TABLES[0] + " (" + Config.CUSTOMER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.CUSTOMER_NAME + " STRING, " + Config.CUSTOMER_SURNAME + " STRING, " + Config.CUSTOMER_ADDRESS + " STRING, " + Config.CUSTOMER_PHONE + " INT)";
+		String createInvoice = "CREATE TABLE " + Config.TABLES[1] + " (" + Config.INVOICE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.CUSTOMER_ID + " INTEGER, " + Config.PRODUCT_ID + " INTEGER, " + Config.PRODUCT_NAME + " STRING, " + Config.PRODUCT_QUANTITY + " INTEGER)";
+		String createProduct = "CREATE TABLE " + Config.TABLES[2] + " (" + Config.PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Config.PRODUCT_NAME + " STRING, " + Config.PRODUCT_DESCRIPTION + " STRING, " + Config.PRODUCT_QUANTITY + " INTEGER, " + Config.PRODUCT_UNIT_COST + " REAL)";
 
 		statement.executeUpdate(createCustomer);
 		statement.executeUpdate(createInvoice);

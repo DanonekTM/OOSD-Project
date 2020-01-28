@@ -10,7 +10,7 @@ public class Add
 {	
 	public void addCustomer(String name, String surname, String address, int phone)
 	{
-		String sql = "INSERT INTO " + Config.tables[0] + " (" + Config.customer_name + ", " + Config.customer_surname + ", " + Config.customer_address + ", " + Config.customer_phone + ") VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO " + Config.TABLES[0] + " (" + Config.CUSTOMER_NAME + ", " + Config.CUSTOMER_SURNAME + ", " + Config.CUSTOMER_ADDRESS + ", " + Config.CUSTOMER_PHONE + ") VALUES (?, ?, ?, ?)";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
@@ -28,7 +28,7 @@ public class Add
 	
 	public void addProduct(String name, String description, int quantity, double cost)
 	{
-		String sql = "INSERT INTO " + Config.tables[2] + " (" + Config.product_name + ", " + Config.product_description + ", " + Config.product_quantity + ", " + Config.product_unit_cost + ") VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO " + Config.TABLES[2] + " (" + Config.PRODUCT_NAME + ", " + Config.PRODUCT_DESCRIPTION + ", " + Config.PRODUCT_QUANTITY + ", " + Config.PRODUCT_UNIT_COST + ") VALUES (?, ?, ?, ?)";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
@@ -46,7 +46,7 @@ public class Add
 	
 	public void addInvoice(int customerId, int productId, String productName, int productQuantity)
 	{
-		String sql = "INSERT INTO " + Config.tables[1] + " (" + Config.customer_id + ", " + Config.product_id + ", " + Config.product_name + ", " + Config.product_quantity + ") VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO " + Config.TABLES[1] + " (" + Config.CUSTOMER_ID + ", " + Config.PRODUCT_ID + ", " + Config.PRODUCT_NAME + ", " + Config.PRODUCT_QUANTITY + ") VALUES (?, ?, ?, ?)";
 		
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{

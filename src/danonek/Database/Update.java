@@ -10,7 +10,7 @@ public class Update
 {
 	public void updateCustomerNameById(int id, String name)
 	{
-		String sql = "UPDATE " + Config.tables[0] + " SET " + Config.customer_name + " = ? WHERE " + Config.customer_id + " = ?";
+		String sql = "UPDATE " + Config.TABLES[0] + " SET " + Config.CUSTOMER_NAME + " = ? WHERE " + Config.CUSTOMER_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
@@ -26,7 +26,7 @@ public class Update
 	
 	public void updateCustomerPhoneById(int id, int phone)
 	{
-		String sql = "UPDATE " + Config.tables[0] + " SET " + Config.customer_phone + " = ? WHERE " + Config.customer_id + " = ?";
+		String sql = "UPDATE " + Config.TABLES[0] + " SET " + Config.CUSTOMER_PHONE + " = ? WHERE " + Config.CUSTOMER_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
@@ -42,7 +42,7 @@ public class Update
 	
 	public void updateProductNameById(int id, String name)
 	{
-		String sql = "UPDATE " + Config.tables[2] + " SET " + Config.product_name + " = ? WHERE " + Config.product_id + " = ?";
+		String sql = "UPDATE " + Config.TABLES[2] + " SET " + Config.PRODUCT_NAME + " = ? WHERE " + Config.PRODUCT_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{
@@ -58,7 +58,7 @@ public class Update
 	
 	public void updateProductQuantityById(int id, int quantity)
 	{
-		String sql = "UPDATE " + Config.tables[2] + " SET " + Config.product_quantity + " = ? WHERE " + Config.product_id + " = ?";
+		String sql = "UPDATE " + Config.TABLES[2] + " SET " + Config.PRODUCT_QUANTITY + " = ? WHERE " + Config.PRODUCT_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
 		{

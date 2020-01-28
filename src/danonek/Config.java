@@ -11,28 +11,58 @@ public class Config
 	public static final Logger LOGGER = Logger.getGlobal();
 	
 	// Database Tables
-	public static final String tables[] = {"customer", "invoice", "product"};
+	public static final String TABLES[] = {"customer", "invoice", "product"};
 	
 	// Customer Database Columns
-	public static final String customer_id = "customer_id";
-	public static final String customer_name = "customer_name";
-	public static final String customer_surname = "customer_surname";
-	public static final String customer_address = "customer_address";
-	public static final String customer_phone = "customer_phone";
+	public static final String CUSTOMER_ID = "customer_id";
+	public static final String CUSTOMER_NAME = "customer_name";
+	public static final String CUSTOMER_SURNAME = "customer_surname";
+	public static final String CUSTOMER_ADDRESS = "customer_address";
+	public static final String CUSTOMER_PHONE = "customer_phone";
 	
 	// Invoice Database Columns
-	public static final String invoice_id = "invoice_id";
+	public static final String INVOICE_ID = "invoice_id";
 	
 	// Product Database Columns
-	public static final String product_id = "product_id";
-	public static final String product_name = "product_name";
-	public static final String product_description = "product_description";
-	public static final String product_quantity = "product_quantity";
-	public static final String product_unit_cost = "product_unit_cost";
+	public static final String PRODUCT_ID = "product_id";
+	public static final String PRODUCT_NAME = "product_name";
+	public static final String PRODUCT_DESCRIPTION = "product_description";
+	public static final String PRODUCT_QUANTITY = "product_quantity";
+	public static final String PRODUCT_UNIT_COST = "product_unit_cost";
 
-	// Strings For MainFrame
-	public static final String mainFrame_title = "Invoice Managment";
+	// Font
+	public static final String FONT_NAME = "Tahoma";
+
+	// Main Strings
+	public static final String MAIN_FRAME_TITLE = "Invoice Managment";
+
+	public static final String ADD_INVOICE_STRING = "Add Invoice";
+	public static final String ADD_CUSTOMER_STRING = "Add Customer";
+	public static final String ADD_PRODUCT_STRING = "Add Product";
+
+	public static final String VIEW_PRODUCT_STRING = "View Product";
+	public static final String VIEW_CUSTOMER_STRING = "View Customer";
+	public static final String VIEW_INVOICE_STRING = "View Invoice";
 	
+	// Strings For CustomerAddFrame
+	public static final String CUSTOMER_ADD_FRAME_TITLE = "Add Customer Form";
+
+	public static final String CUSTOMER_NAME_STRING = "Customer Name";
+	public static final String CUSTOMER_SURNAME_STRING = "Customer Surname";
+	public static final String CUSTOMER_ADDRESS_STRING = "Customer Address";
+	public static final String CUSTOMER_PHONE_STRING = "Customer Phone";
+
+	// Strings for ProductAddFrame
+	public static final String PRODUCT_ADD_FRAME_TITLE = "Add Product Form";
+
+	public static final String PRODUCT_NAME_STRING = "Product Name";
+	public static final String PRODUCT_DESCRIPTION_STRING = "Product Description";
+	public static final String PRODUCT_QUANTITY_STRING = "Product Quantity";
+	public static final String PRODUCT_UNIT_COST_STRING = "Product Unit Cost";
+	
+	// Strings For InvoiceAddFrame
+	public static final String INVOICE_ADD_FRAME_TITLE = "Add Invoice Form";
+
 	public Config()
 	{
 		

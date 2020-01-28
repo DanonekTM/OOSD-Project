@@ -10,7 +10,7 @@ public class Delete
 {	
 	public void deleteCustomerById(int id)
 	{
-		String sql = "DELETE FROM " + Config.tables[0] + " WHERE " + Config.customer_id + " = ?";
+		String sql = "DELETE FROM " + Config.TABLES[0] + " WHERE " + Config.CUSTOMER_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
@@ -25,7 +25,7 @@ public class Delete
 	
 	public void deleteProductById(int id)
 	{
-		String sql = "DELETE FROM " + Config.tables[2] + " WHERE " + Config.product_id + " = ?";
+		String sql = "DELETE FROM " + Config.TABLES[2] + " WHERE " + Config.PRODUCT_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
@@ -40,7 +40,7 @@ public class Delete
 	
 	public void deleteInvoiceById(int id)
 	{
-		String sql = "DELETE FROM " + Config.tables[1] + " WHERE " + Config.invoice_id + " = ?";
+		String sql = "DELETE FROM " + Config.TABLES[1] + " WHERE " + Config.INVOICE_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
@@ -55,7 +55,7 @@ public class Delete
 	
 	public void deleteInvoicesByCustomerId(int id)
 	{
-		String sql = "DELETE FROM " + Config.tables[1] + " WHERE " + Config.customer_id + " = ?";
+		String sql = "DELETE FROM " + Config.TABLES[1] + " WHERE " + Config.CUSTOMER_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
@@ -70,7 +70,7 @@ public class Delete
 	
 	public void deleteInvoicesByProductId(int id)
 	{
-		String sql = "DELETE FROM " + Config.tables[1] + " WHERE " + Config.product_id + " = ?";
+		String sql = "DELETE FROM " + Config.TABLES[1] + " WHERE " + Config.PRODUCT_ID + " = ?";
 		 
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
