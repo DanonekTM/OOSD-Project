@@ -62,6 +62,10 @@ public class Config
 	
 	// Strings For InvoiceAddFrame
 	public static final String INVOICE_ADD_FRAME_TITLE = "Add Invoice Form";
+	
+	
+	// Strings For CustomerViewFrame
+	public static final String CUSTOMER_VIEW_FRAME_TITLE = "View Customer";
 
 	public Config()
 	{

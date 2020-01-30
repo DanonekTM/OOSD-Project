@@ -1,9 +1,11 @@
 package danonek;
 
+import java.sql.ResultSet;
 import java.util.logging.Level;
 
 import danonek.Database.DatabaseController;
 import danonek.Interface.CustomerAddFrame;
+import danonek.Interface.CustomerViewFrame;
 import danonek.Interface.MainFrame;
 
 public class Program 
@@ -48,9 +50,31 @@ public class Program
 			
 		});
 
-		mainFrame.getViewCustomerBtn().addActionListener(e -> 
+		mainFrame.getViewCustomerBtn().addActionListener(event -> 
 		{
-
+			CustomerViewFrame cvf = new CustomerViewFrame();
+			
+			try 
+			{
+				ResultSet rs = db.getAllFromCustomer();
+				while(rs.next())
+				{
+					cvf.getTableModel().addRow(new Object[]{rs.getString(Config.CUSTOMER_ID), rs.getString(Config.CUSTOMER_NAME), rs.getString(Config.CUSTOMER_SURNAME), rs.getString(Config.CUSTOMER_ADDRESS), rs.getString(Config.CUSTOMER_PHONE)});
+				}
+			} 
+			catch (Exception e) 
+			{
+				System.out.println(e.getMessage());
+			}
+			
+			cvf.getJTable().getSelectionModel().addListSelectionListener(a ->
+			{
+		    	  if (!a.getValueIsAdjusting()) 
+		    	  {
+		    		  System.out.println(cvf.getJTable().getValueAt(cvf.getJTable().getSelectedRow(), 0).toString());
+		    	  }
+			});
+			
 		});
 		
 		mainFrame.getViewInvoiceBtn().addActionListener(e ->
