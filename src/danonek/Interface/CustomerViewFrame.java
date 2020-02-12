@@ -2,6 +2,7 @@ package danonek.Interface;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -62,6 +63,8 @@ public class CustomerViewFrame
 	
 		jtbl.setDefaultEditor(Object.class, null);
 		jtbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		Config.LOGGER.log(Level.INFO, "Created CustomerViewFrame.");
 	}
 	
 	public DefaultTableModel getTableModel()
