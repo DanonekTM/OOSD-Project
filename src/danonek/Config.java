@@ -41,6 +41,7 @@ public class Config
 	public static final String ADD_PRODUCT_STRING = "Add Product";
 	
 	public static final String DELETE_CUSTOMER_STRING = "Delete Customer";
+	public static final String DELETE_PRODUCT_STRING = "Delete Product";
 
 	public static final String VIEW_PRODUCT_STRING = "View Product";
 	public static final String VIEW_CUSTOMER_STRING = "View Customer";
@@ -49,6 +50,7 @@ public class Config
 	// Strings For CustomerAddFrame
 	public static final String CUSTOMER_ADD_FRAME_TITLE = "Add Customer Form";
 
+	public static final String CUSTOMER_ID_STRING = "Customer ID";
 	public static final String CUSTOMER_NAME_STRING = "Customer Name";
 	public static final String CUSTOMER_SURNAME_STRING = "Customer Surname";
 	public static final String CUSTOMER_ADDRESS_STRING = "Customer Address";
@@ -57,6 +59,7 @@ public class Config
 	// Strings for ProductAddFrame
 	public static final String PRODUCT_ADD_FRAME_TITLE = "Add Product Form";
 
+	public static final String PRODUCT_ID_STRING = "Product ID";
 	public static final String PRODUCT_NAME_STRING = "Product Name";
 	public static final String PRODUCT_DESCRIPTION_STRING = "Product Description";
 	public static final String PRODUCT_QUANTITY_STRING = "Product Quantity";
@@ -67,7 +70,9 @@ public class Config
 	
 	
 	// Strings For CustomerViewFrame
-	public static final String CUSTOMER_VIEW_FRAME_TITLE = "View Customer";
+	public static final String CUSTOMER_VIEW_FRAME_TITLE = "View Customer Window";
+	
+	public static final String PRODUCT_VIEW_FRAME_TITLE = "View Product Window";
 	
 	public Config()
 	{

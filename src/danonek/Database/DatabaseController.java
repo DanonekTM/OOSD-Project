@@ -90,7 +90,7 @@ public class DatabaseController
 	
 	public void deleteProductById(int id)
 	{
-		Delete.deleteCustomerById(id);
+		Delete.deleteProductById(id);
 	}
 	
 	public void deleteInvoiceById(int id)

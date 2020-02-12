@@ -1,6 +1,7 @@
 package danonek;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 
 import danonek.Database.DatabaseController;
@@ -15,6 +16,8 @@ public class Program
 		
 		db.addCustomer("TEST1 NAME", "TEST1 SURNAME", "TEST1 ADD", 1);
 		db.addCustomer("TEST2 NAME", "TEST2 SURNAME", "TEST2 ADD", 2);
+		db.addProduct("TESTPROD", "TESTPROD", 2, 12.50);
+		db.addProduct("TESTPROD", "TESTPROD", 4, 13.50);
 		
 		// Lambda listeners for each button
 		mainFrame.getAddCustomerBtn().addActionListener(e ->
@@ -93,34 +96,34 @@ public class Program
 			});
 		});
 
-		mainFrame.getViewCustomerBtn().addActionListener(event -> 
+		mainFrame.getViewCustomerBtn().addActionListener(e -> 
 		{
-			CustomerViewFrame cvf = new CustomerViewFrame();
+			CustomerViewFrame customerView = new CustomerViewFrame();
 
 			try 
 			{
 				ResultSet rs = db.getAllFromCustomer();
-				while(rs.next())
+				while (rs.next())
 				{
-					cvf.getTableModel().addRow(new Object[]{rs.getString(Config.CUSTOMER_ID), rs.getString(Config.CUSTOMER_NAME), rs.getString(Config.CUSTOMER_SURNAME), rs.getString(Config.CUSTOMER_ADDRESS), rs.getString(Config.CUSTOMER_PHONE)});
+					customerView.getTableModel().addRow(new Object[]{rs.getString(Config.CUSTOMER_ID), rs.getString(Config.CUSTOMER_NAME), rs.getString(Config.CUSTOMER_SURNAME), rs.getString(Config.CUSTOMER_ADDRESS), rs.getString(Config.CUSTOMER_PHONE)});
 				}
 			}
-			catch (Exception e) 
+			catch (Exception ex) 
 			{
-				Config.LOGGER.log(Level.INFO, e.getMessage());
+				Config.LOGGER.log(Level.INFO, ex.getMessage());
 			}
 			
-			cvf.getDeleteCustomerBtn().addActionListener(g ->
+			customerView.getDeleteCustomerBtn().addActionListener(g ->
 			{
 				try
 				{
-					int id = Integer.parseInt((cvf.getJTable().getValueAt(cvf.getJTable().getSelectedRow(), 0).toString().trim()));
+					int id = Integer.parseInt((customerView.getJTable().getValueAt(customerView.getJTable().getSelectedRow(), 0).toString().trim()));
 					db.deleteCustomerById(id);
-					cvf.getTableModel().removeRow(cvf.getJTable().getSelectedRow());
+					customerView.getTableModel().removeRow(customerView.getJTable().getSelectedRow());
 				}
 				catch (Exception ex)
 				{
-					cvf.setErrorMessage("* Select an entry first!");
+					customerView.setErrorMessage("* Select an entry first!");
 				}
 			});
 			
@@ -133,7 +136,35 @@ public class Program
 		
 		mainFrame.getViewProductBtn().addActionListener(e ->
 		{
+			ProductViewFrame productView = new ProductViewFrame();
 
+			try 
+			{
+				ResultSet rs = db.getAllFromProduct();
+				while (rs.next())
+				{
+					productView.getTableModel().addRow(new Object[]{rs.getString(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME), rs.getString(Config.PRODUCT_DESCRIPTION), rs.getString(Config.PRODUCT_QUANTITY), rs.getString(Config.PRODUCT_UNIT_COST)});
+				}
+			}
+			catch (Exception ex) 
+			{
+				Config.LOGGER.log(Level.INFO, ex.getMessage());
+			}
+			
+			productView.getDeleteProductBtn().addActionListener(g ->
+			{
+				try
+				{
+					int id = Integer.parseInt((productView.getJTable().getValueAt(productView.getJTable().getSelectedRow(), 0).toString().trim()));
+					db.deleteProductById(id);
+					productView.getTableModel().removeRow(productView.getJTable().getSelectedRow());
+				}
+				catch (Exception ex)
+				{
+					productView.setErrorMessage("* Select an entry first!");
+				}
+			});
+			
 		});
 		
 		Config.LOGGER.log(Level.INFO, "Program initialised.");

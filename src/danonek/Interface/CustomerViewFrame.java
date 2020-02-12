@@ -34,11 +34,11 @@ public class CustomerViewFrame
 		customerViewFrame.setResizable(false);
 		customerViewFrame.setLocationRelativeTo(null);
 		
-		model.addColumn(Config.CUSTOMER_ID);
-		model.addColumn(Config.CUSTOMER_NAME);
-		model.addColumn(Config.CUSTOMER_SURNAME);
-		model.addColumn(Config.CUSTOMER_ADDRESS);
-		model.addColumn(Config.CUSTOMER_PHONE);
+		model.addColumn(Config.CUSTOMER_ID_STRING);
+		model.addColumn(Config.CUSTOMER_NAME_STRING);
+		model.addColumn(Config.CUSTOMER_SURNAME_STRING);
+		model.addColumn(Config.CUSTOMER_ADDRESS_STRING);
+		model.addColumn(Config.CUSTOMER_PHONE_STRING);
 		
 		JScrollPane pg = new JScrollPane(jtbl);
 		pg.setSize(670, 320);

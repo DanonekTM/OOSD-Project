@@ -2,7 +2,6 @@ package danonek.Interface;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Window;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -90,7 +89,7 @@ public class ProductAddFrame
 		btnAddProduct = new JButton(Config.ADD_PRODUCT_STRING);
 		btnAddProduct.setBackground(Color.LIGHT_GRAY);
 		btnAddProduct.setForeground(Color.BLACK);
-		btnAddProduct.setFont(new Font(Config.FONT_NAME, Font.BOLD | Font.ITALIC, 9));
+		btnAddProduct.setFont(new Font(Config.FONT_NAME, Font.BOLD, 12));
 		btnAddProduct.setBounds(120, 290, 150, 50);
 		addProductFrame.getContentPane().add(btnAddProduct);
 		

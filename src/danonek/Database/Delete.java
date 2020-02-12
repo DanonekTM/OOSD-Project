@@ -26,7 +26,7 @@ public class Delete
 	public void deleteProductById(int id)
 	{
 		String sql = "DELETE FROM " + Config.TABLES[2] + " WHERE " + Config.PRODUCT_ID + " = ?";
-		 
+
 		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
 		{
 			pstmt.setInt(1, id);
