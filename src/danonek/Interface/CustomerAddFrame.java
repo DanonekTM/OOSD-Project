@@ -20,20 +20,26 @@ public class CustomerAddFrame
 	private JLabel labelCustomerSurname;
 	private JLabel labelCustomerAddress;
 	private JLabel labelCustomerPhone;
+	private JLabel labelErrorMessage;
 
 	private JTextField textFieldCustomerName;
 	private JTextField textFieldCustomerSurname;
 	private JTextField textFieldCustomerAddress;
 	private JTextField textFieldCustomerPhone;
 
+	
 	private JButton btnAddCustomer;
 	
 	public CustomerAddFrame()
 	{	
 		// Creating the Frame
 		customerAddFrame = new JFrame(Config.CUSTOMER_ADD_FRAME_TITLE);
-		customerAddFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
+		customerAddFrame.getContentPane().setBackground(Color.WHITE);
 		customerAddFrame.getContentPane().setLayout(null);
+		customerAddFrame.setSize(400, 400);
+		customerAddFrame.setVisible(true);
+		customerAddFrame.setResizable(false);
+		customerAddFrame.setLocationRelativeTo(null);
 		
 		textFieldCustomerName = new JTextField();
 		textFieldCustomerName.setBounds(162, 30, 195, 20);
@@ -75,15 +81,18 @@ public class CustomerAddFrame
 		textFieldCustomerPhone.setBounds(162, 187, 195, 20);
 		customerAddFrame.getContentPane().add(textFieldCustomerPhone);
 		
-		btnAddCustomer = new JButton(Config.ADD_CUSTOMER_STRING);
-		btnAddCustomer.setBackground(Color.CYAN);
-		btnAddCustomer.setFont(new Font(Config.FONT_NAME, Font.BOLD | Font.ITALIC, 9));
-		btnAddCustomer.setBounds(120, 260, 147, 45);
-		customerAddFrame.getContentPane().add(btnAddCustomer);
+		labelErrorMessage = new JLabel("");
+		labelErrorMessage.setVisible(false);
+		labelErrorMessage.setBounds(24, 237, 330, 20);
+		labelErrorMessage.setForeground(Color.RED);
+		customerAddFrame.getContentPane().add(labelErrorMessage);
 		
-		customerAddFrame.setSize(400, 400);
-		customerAddFrame.setVisible(true);
-		customerAddFrame.setResizable(false);
+		btnAddCustomer = new JButton(Config.ADD_CUSTOMER_STRING);
+		btnAddCustomer.setBackground(Color.LIGHT_GRAY);
+		btnAddCustomer.setForeground(Color.BLACK);
+		btnAddCustomer.setFont(new Font(Config.FONT_NAME, Font.BOLD, 12));
+		btnAddCustomer.setBounds(120, 290, 150, 50);
+		customerAddFrame.getContentPane().add(btnAddCustomer);
 		
 		Config.LOGGER.log(Level.INFO, "Created CustomerAddFrame.");
 	}
@@ -112,6 +121,15 @@ public class CustomerAddFrame
 	{
 		return btnAddCustomer;
 	}
-
 	
+	public void setErrorMessage(String error)
+	{
+		labelErrorMessage.setText(error);
+		labelErrorMessage.setVisible(true);
+	}
+	
+	public JFrame getFrame()
+	{
+		return customerAddFrame;
+	}
 }

@@ -2,6 +2,7 @@ package danonek.Interface;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Window;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ public class ProductAddFrame
 	private JLabel LabelProductDescription;
 	private JLabel LabelProductQuantity;
 	private JLabel LabelProductUnitCost;
+	private JLabel labelErrorMessage;
 
 	private JTextField textFieldProductName;
 	private JTextField textFieldProductDescription;
@@ -32,8 +34,12 @@ public class ProductAddFrame
 	{
 		// Creating the Frame
 		addProductFrame = new JFrame(Config.PRODUCT_ADD_FRAME_TITLE);
-		addProductFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
+		addProductFrame.getContentPane().setBackground(Color.WHITE);
 		addProductFrame.getContentPane().setLayout(null);
+		addProductFrame.setSize(400, 400);
+		addProductFrame.setVisible(true);
+		addProductFrame.setResizable(false);
+		addProductFrame.setLocationRelativeTo(null);
 
 		textFieldProductName = new JTextField();
 		textFieldProductName.setBounds(162, 30, 195, 20);
@@ -75,15 +81,18 @@ public class ProductAddFrame
 		textFieldProductUnitPrice.setBounds(162, 187, 195, 20);
 		addProductFrame.getContentPane().add(textFieldProductUnitPrice);
 
+		labelErrorMessage = new JLabel("");
+		labelErrorMessage.setVisible(false);
+		labelErrorMessage.setBounds(24, 237, 330, 20);
+		labelErrorMessage.setForeground(Color.RED);
+		addProductFrame.getContentPane().add(labelErrorMessage);
+
 		btnAddProduct = new JButton(Config.ADD_PRODUCT_STRING);
-		btnAddProduct.setBackground(Color.CYAN);
+		btnAddProduct.setBackground(Color.LIGHT_GRAY);
+		btnAddProduct.setForeground(Color.BLACK);
 		btnAddProduct.setFont(new Font(Config.FONT_NAME, Font.BOLD | Font.ITALIC, 9));
-		btnAddProduct.setBounds(120, 260, 147, 45);
+		btnAddProduct.setBounds(120, 290, 150, 50);
 		addProductFrame.getContentPane().add(btnAddProduct);
-		
-		addProductFrame.setSize(400, 400);
-		addProductFrame.setVisible(true);
-		addProductFrame.setResizable(false);
 		
 		Config.LOGGER.log(Level.INFO, "Created AddProductFrame.");
 	}
@@ -108,9 +117,20 @@ public class ProductAddFrame
 		return textFieldProductUnitPrice;
 	}
 
+	public void setErrorMessage(String error)
+	{
+		labelErrorMessage.setText(error);
+		labelErrorMessage.setVisible(true);
+	}
+
 	public JButton getBtnAddProduct()
 	{
 		return btnAddProduct;
+	}
+
+	public JFrame getFrame()
+	{
+		return addProductFrame;
 	}
 	
 }

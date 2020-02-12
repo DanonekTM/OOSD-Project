@@ -39,6 +39,8 @@ public class Config
 	public static final String ADD_INVOICE_STRING = "Add Invoice";
 	public static final String ADD_CUSTOMER_STRING = "Add Customer";
 	public static final String ADD_PRODUCT_STRING = "Add Product";
+	
+	public static final String DELETE_CUSTOMER_STRING = "Delete Customer";
 
 	public static final String VIEW_PRODUCT_STRING = "View Product";
 	public static final String VIEW_CUSTOMER_STRING = "View Customer";
@@ -66,7 +68,7 @@ public class Config
 	
 	// Strings For CustomerViewFrame
 	public static final String CUSTOMER_VIEW_FRAME_TITLE = "View Customer";
-
+	
 	public Config()
 	{
 		
