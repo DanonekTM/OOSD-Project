@@ -31,7 +31,6 @@ public class ProductViewFrame
 		productViewFrame.getContentPane().setBackground(Color.WHITE);
 		productViewFrame.getContentPane().setLayout(null);
 		productViewFrame.setSize(700, 500);
-		productViewFrame.setVisible(true);
 		productViewFrame.setResizable(false);
 		productViewFrame.setLocationRelativeTo(null);
 		productViewFrame.setIconImage(Config.ICON.getImage());
@@ -47,7 +46,6 @@ public class ProductViewFrame
 		pg.setLocation(10, 10);
 		productViewFrame.getContentPane().add(pg);
 		
-		
 		deleteProductBtn = new JButton(Config.DELETE_PRODUCT_STRING);
 		deleteProductBtn.setBackground(Color.LIGHT_GRAY);
 		deleteProductBtn.setForeground(Color.BLACK);
@@ -61,10 +59,10 @@ public class ProductViewFrame
 		labelErrorMessage.setForeground(Color.RED);
 		productViewFrame.getContentPane().add(labelErrorMessage);
 		
-	
 		jtbl.setDefaultEditor(Object.class, null);
 		jtbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
+		productViewFrame.setVisible(true);
 		Config.LOGGER.log(Level.INFO, "Created ProductViewFrame.");
 	}
 	

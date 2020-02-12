@@ -31,7 +31,6 @@ public class CustomerViewFrame
 		customerViewFrame.getContentPane().setBackground(Color.WHITE);
 		customerViewFrame.getContentPane().setLayout(null);
 		customerViewFrame.setSize(700, 500);
-		customerViewFrame.setVisible(true);
 		customerViewFrame.setResizable(false);
 		customerViewFrame.setLocationRelativeTo(null);
 		customerViewFrame.setIconImage(Config.ICON.getImage());
@@ -61,10 +60,10 @@ public class CustomerViewFrame
 		labelErrorMessage.setForeground(Color.RED);
 		customerViewFrame.getContentPane().add(labelErrorMessage);
 		
-	
 		jtbl.setDefaultEditor(Object.class, null);
 		jtbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
+		customerViewFrame.setVisible(true);
 		Config.LOGGER.log(Level.INFO, "Created CustomerViewFrame.");
 	}
 	

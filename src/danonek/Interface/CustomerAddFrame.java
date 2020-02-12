@@ -37,7 +37,6 @@ public class CustomerAddFrame
 		customerAddFrame.getContentPane().setBackground(Color.WHITE);
 		customerAddFrame.getContentPane().setLayout(null);
 		customerAddFrame.setSize(400, 400);
-		customerAddFrame.setVisible(true);
 		customerAddFrame.setResizable(false);
 		customerAddFrame.setLocationRelativeTo(null);
 		customerAddFrame.setIconImage(Config.ICON.getImage());
@@ -96,6 +95,7 @@ public class CustomerAddFrame
 		btnAddCustomer.setBounds(120, 290, 150, 50);
 		customerAddFrame.getContentPane().add(btnAddCustomer);
 		
+		customerAddFrame.setVisible(true);
 		Config.LOGGER.log(Level.INFO, "Created CustomerAddFrame.");
 	}
 

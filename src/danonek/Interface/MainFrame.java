@@ -25,7 +25,6 @@ public class MainFrame
 		mainFrame.getContentPane().setLayout(null);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setSize(500,500);
-		mainFrame.setVisible(true);
 		mainFrame.setResizable(false);
 		mainFrame.setLocationRelativeTo(null);
 		mainFrame.setIconImage(Config.ICON.getImage());
@@ -72,6 +71,7 @@ public class MainFrame
 		viewCustomerBtn.setBounds(280, 180, 140, 90);
 		mainFrame.getContentPane().add(viewCustomerBtn);
 		
+		mainFrame.setVisible(true);
 		Config.LOGGER.log(Level.INFO, "Created MainFrame.");
 	}
 

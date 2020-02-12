@@ -36,7 +36,6 @@ public class ProductAddFrame
 		addProductFrame.getContentPane().setBackground(Color.WHITE);
 		addProductFrame.getContentPane().setLayout(null);
 		addProductFrame.setSize(400, 400);
-		addProductFrame.setVisible(true);
 		addProductFrame.setResizable(false);
 		addProductFrame.setLocationRelativeTo(null);
 		addProductFrame.setIconImage(Config.ICON.getImage());
@@ -94,6 +93,7 @@ public class ProductAddFrame
 		btnAddProduct.setBounds(120, 290, 150, 50);
 		addProductFrame.getContentPane().add(btnAddProduct);
 		
+		addProductFrame.setVisible(true);
 		Config.LOGGER.log(Level.INFO, "Created ProductAddFrame.");
 	}
 	
