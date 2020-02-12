@@ -47,7 +47,7 @@ public class DatabaseController
 		statement.executeUpdate(createInvoice);
 		statement.executeUpdate(createProduct);
 			
-		Config.LOGGER.log(Level.INFO, "DB created.");
+		Config.LOGGER.log(Level.INFO, "Database created.");
 	}
 
 	/*
