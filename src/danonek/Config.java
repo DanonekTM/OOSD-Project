@@ -3,12 +3,16 @@ package danonek;
 import java.sql.Connection;
 import java.util.logging.Logger;
 
+import javax.swing.ImageIcon;
+
 public class Config
 {
 	// Variables
 	public static Connection CONNECTION = null;
 	public static final String DB_PATH = "jdbc:sqlite:project.db";
 	public static final Logger LOGGER = Logger.getGlobal();
+	
+	public static final ImageIcon ICON = new ImageIcon("res/ico.png");
 	
 	// Database Tables
 	public static final String TABLES[] = {"customer", "invoice", "product"};
@@ -76,6 +80,6 @@ public class Config
 	
 	public Config()
 	{
-		
+		// Empty boi
 	}
 }

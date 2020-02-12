@@ -39,6 +39,7 @@ public class ProductAddFrame
 		addProductFrame.setVisible(true);
 		addProductFrame.setResizable(false);
 		addProductFrame.setLocationRelativeTo(null);
+		addProductFrame.setIconImage(Config.ICON.getImage());
 
 		textFieldProductName = new JTextField();
 		textFieldProductName.setBounds(162, 30, 195, 20);
@@ -93,7 +94,7 @@ public class ProductAddFrame
 		btnAddProduct.setBounds(120, 290, 150, 50);
 		addProductFrame.getContentPane().add(btnAddProduct);
 		
-		Config.LOGGER.log(Level.INFO, "Created AddProductFrame.");
+		Config.LOGGER.log(Level.INFO, "Created ProductAddFrame.");
 	}
 	
 	public JTextField getTextFieldProductName() 

@@ -34,6 +34,7 @@ public class CustomerViewFrame
 		customerViewFrame.setVisible(true);
 		customerViewFrame.setResizable(false);
 		customerViewFrame.setLocationRelativeTo(null);
+		customerViewFrame.setIconImage(Config.ICON.getImage());
 		
 		model.addColumn(Config.CUSTOMER_ID_STRING);
 		model.addColumn(Config.CUSTOMER_NAME_STRING);

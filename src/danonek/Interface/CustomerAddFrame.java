@@ -40,6 +40,8 @@ public class CustomerAddFrame
 		customerAddFrame.setVisible(true);
 		customerAddFrame.setResizable(false);
 		customerAddFrame.setLocationRelativeTo(null);
+		customerAddFrame.setIconImage(Config.ICON.getImage());
+		
 		
 		textFieldCustomerName = new JTextField();
 		textFieldCustomerName.setBounds(162, 30, 195, 20);

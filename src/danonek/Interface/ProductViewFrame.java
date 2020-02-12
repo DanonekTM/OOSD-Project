@@ -34,6 +34,7 @@ public class ProductViewFrame
 		productViewFrame.setVisible(true);
 		productViewFrame.setResizable(false);
 		productViewFrame.setLocationRelativeTo(null);
+		productViewFrame.setIconImage(Config.ICON.getImage());
 		
 		model.addColumn(Config.PRODUCT_ID_STRING);
 		model.addColumn(Config.PRODUCT_NAME_STRING);

@@ -28,6 +28,7 @@ public class MainFrame
 		mainFrame.setVisible(true);
 		mainFrame.setResizable(false);
 		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setIconImage(Config.ICON.getImage());
 		
 		addCustomerBtn = new JButton(Config.ADD_CUSTOMER_STRING);
 		addCustomerBtn.setBackground(Color.LIGHT_GRAY);
