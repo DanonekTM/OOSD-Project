@@ -71,12 +71,15 @@ public class Config
 	
 	// Strings For InvoiceAddFrame
 	public static final String INVOICE_ADD_FRAME_TITLE = "Add Invoice Form";
+	public static final String INVOICE_ID_STRING = "Invoice ID";
 	
 	
 	// Strings For CustomerViewFrame
 	public static final String CUSTOMER_VIEW_FRAME_TITLE = "View Customer Window";
 	
 	public static final String PRODUCT_VIEW_FRAME_TITLE = "View Product Window";
+	
+	public static final String CUSTOMER_FILTER_FRAME_TITLE = "Filter Customer Window";
 	
 	public Config()
 	{

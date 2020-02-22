@@ -1,7 +1,14 @@
 package danonek;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
 import java.util.logging.Level;
+
+import javax.swing.DefaultComboBoxModel;
 
 import danonek.Database.DatabaseController;
 import danonek.Interface.*;
@@ -13,10 +20,11 @@ public class Program
 		MainFrame mainFrame = new MainFrame();
 		DatabaseController db = new DatabaseController();
 		
-		db.addCustomer("TEST1 NAME", "TEST1 SURNAME", "TEST1 ADD", 1);
-		db.addCustomer("TEST2 NAME", "TEST2 SURNAME", "TEST2 ADD", 2);
+		db.addCustomer("TEST NAME", "TEST SURNAME", "TEST ADD", 1);
+		db.addCustomer("TEST NAME", "TEST SURNAME", "TEST ADD", 2);
 		db.addProduct("TESTPROD", "TESTPROD", 2, 12.50);
 		db.addProduct("TESTPROD", "TESTPROD", 4, 13.50);
+		db.addInvoice(1, 1, "TESTPROD", 3);
 		
 		// Lambda listeners for each button
 		mainFrame.getAddCustomerBtn().addActionListener(e ->
@@ -130,7 +138,58 @@ public class Program
 		
 		mainFrame.getViewInvoiceBtn().addActionListener(e ->
 		{
-
+			CustomerFilterView customerFilterView = new CustomerFilterView();
+			
+			TreeMap<Integer,String> customerMap = new TreeMap<>();
+			List<String> invoiceList = new ArrayList<>();
+			
+			try
+			{
+				ResultSet rs = db.getAllFromCustomer();
+				while (rs.next())
+				{
+					customerMap.put(rs.getInt(Config.CUSTOMER_ID), rs.getString(Config.CUSTOMER_NAME));
+				}
+			}
+			catch (Exception ex)
+			{
+				Config.LOGGER.log(Level.INFO, ex.getMessage());
+			}
+			
+			for (Map.Entry<Integer, String> m : customerMap.entrySet())
+			{
+				String entry = m.getKey() + " - " + m.getValue();
+				invoiceList.add(entry);
+			}
+			
+			String[] invoicesArr = invoiceList.toArray(new String[invoiceList.size()]);
+			
+			customerFilterView.getComboBox().setModel(new DefaultComboBoxModel<>(invoicesArr));
+			
+			customerFilterView.getViewCustomerBtn().addActionListener(g ->
+			{
+				try
+				{
+					StringTokenizer st = new StringTokenizer(String.valueOf(customerFilterView.getComboBox().getSelectedItem()));
+					int id = 0; 
+					if (st.hasMoreTokens()) 
+					{
+						id = Integer.parseInt(st.nextToken());
+				    }
+					System.out.println(id);
+					ResultSet rs = db.getInvoicesByCustomerId(id);
+					if (rs.isClosed())
+					{
+						System.out.println("CLOSED");
+					}
+					System.out.println("RESULT + " + rs.getInt(Config.INVOICE_ID));
+					customerFilterView.getTableModel().addRow(new Object[]{rs.getString(Config.INVOICE_ID), rs.getString(Config.CUSTOMER_ID), rs.getString(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME), rs.getString(Config.PRODUCT_QUANTITY)});
+				}
+				catch (Exception ex)
+				{
+					Config.LOGGER.log(Level.INFO, "LMAO XD - " + ex.getMessage());
+				}
+			});
 		});
 		
 		mainFrame.getViewProductBtn().addActionListener(e ->
