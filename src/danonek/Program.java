@@ -9,7 +9,6 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 
 import javax.swing.DefaultComboBoxModel;
-
 import danonek.Database.DatabaseController;
 import danonek.Interface.*;
 
@@ -20,11 +19,19 @@ public class Program
 		MainFrame mainFrame = new MainFrame();
 		DatabaseController db = new DatabaseController();
 		
+		// Testing Purposes
 		db.addCustomer("TEST NAME", "TEST SURNAME", "TEST ADD", 1);
 		db.addCustomer("TEST NAME", "TEST SURNAME", "TEST ADD", 2);
 		db.addProduct("TESTPROD", "TESTPROD", 2, 12.50);
 		db.addProduct("TESTPROD", "TESTPROD", 4, 13.50);
 		db.addInvoice(1, 1, "TESTPROD", 3);
+		db.addInvoice(1, 1, "TESTPROD", 3);
+		db.addInvoice(1, 1, "TESTPROD", 3);
+		db.addInvoice(1, 1, "TESTPROD", 3);
+		db.addInvoice(1, 1, "TESTPROD", 3);
+		db.addInvoice(1, 1, "TESTPROD", 3);
+		db.addInvoice(2, 1, "TESTPROD", 3);
+
 		
 		// Lambda listeners for each button
 		mainFrame.getAddCustomerBtn().addActionListener(e ->
@@ -64,7 +71,7 @@ public class Program
 		
 		mainFrame.getAddInvoiceBtn().addActionListener(e ->
 		{
-
+			
 		});
 
 		
@@ -170,24 +177,24 @@ public class Program
 			{
 				try
 				{
+					customerFilterView.getTableModel().getDataVector().removeAllElements();
+					customerFilterView.getTableModel().fireTableDataChanged();
+					
 					StringTokenizer st = new StringTokenizer(String.valueOf(customerFilterView.getComboBox().getSelectedItem()));
 					int id = 0; 
 					if (st.hasMoreTokens()) 
 					{
 						id = Integer.parseInt(st.nextToken());
 				    }
-					System.out.println(id);
 					ResultSet rs = db.getInvoicesByCustomerId(id);
-					if (rs.isClosed())
+					while (rs.next())
 					{
-						System.out.println("CLOSED");
+						customerFilterView.getTableModel().addRow(new Object[]{rs.getString(Config.INVOICE_ID), rs.getString(Config.CUSTOMER_ID), rs.getString(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME), rs.getString(Config.PRODUCT_QUANTITY)});
 					}
-					System.out.println("RESULT + " + rs.getInt(Config.INVOICE_ID));
-					customerFilterView.getTableModel().addRow(new Object[]{rs.getString(Config.INVOICE_ID), rs.getString(Config.CUSTOMER_ID), rs.getString(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME), rs.getString(Config.PRODUCT_QUANTITY)});
 				}
 				catch (Exception ex)
 				{
-					Config.LOGGER.log(Level.INFO, "LMAO XD - " + ex.getMessage());
+					Config.LOGGER.log(Level.INFO, ex.getMessage());
 				}
 			});
 		});

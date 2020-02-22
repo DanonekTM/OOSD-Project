@@ -70,18 +70,9 @@ public class Get
 	
 	public ResultSet getInvoicesByProductId(int id) throws SQLException
 	{
-		String sql = "SELECT * FROM " + Config.TABLES[1] + " WHERE " + Config.PRODUCT_ID + " = ?";
-		
-		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql))
-		{
-			pstmt.setInt(1, id);
-			return pstmt.executeQuery(sql);
-		}
-		catch (SQLException e)
-		{
-			Config.LOGGER.log(Level.INFO, e.getMessage());
-		}
-		return null;
+		String sql = "SELECT * FROM " + Config.TABLES[1] + " WHERE " + Config.PRODUCT_ID + " = " + id;
+		Statement stmt = Config.CONNECTION.createStatement();
+		return stmt.executeQuery(sql);
 	}
 	
 	public ResultSet getAllFromCustomer() throws SQLException
