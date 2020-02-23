@@ -74,6 +74,8 @@ public class Config
 	public static final String INVOICE_ID_STRING = "Invoice ID";
 	
 	
+	public static final String DELETE_INVOICE_STRING = "Delete Invoice";
+	
 	// Strings For CustomerViewFrame
 	public static final String CUSTOMER_VIEW_FRAME_TITLE = "View Customer Window";
 	

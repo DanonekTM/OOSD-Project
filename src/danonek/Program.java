@@ -197,6 +197,21 @@ public class Program
 					Config.LOGGER.log(Level.INFO, ex.getMessage());
 				}
 			});
+			
+			customerFilterView.getDeleteCustomerBtn().addActionListener(x ->
+			{
+				try
+				{
+					int id = Integer.parseInt((customerFilterView.getJTable().getValueAt(customerFilterView.getJTable().getSelectedRow(), 0).toString().trim()));
+					db.deleteInvoiceById(id);
+					customerFilterView.getTableModel().removeRow(customerFilterView.getJTable().getSelectedRow());
+				}
+				catch (Exception ex)
+				{
+					customerFilterView.setErrorMessage("* Select an entry first!");
+				}
+			});
+			
 		});
 		
 		mainFrame.getViewProductBtn().addActionListener(e ->

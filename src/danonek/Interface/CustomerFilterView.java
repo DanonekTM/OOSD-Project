@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.util.logging.Level;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -24,6 +25,9 @@ public class CustomerFilterView
 	private JScrollPane pg = new JScrollPane(jtbl);
 	
 	private JButton viewCustomerBtn;
+	private JButton deleteCustomerBtn;
+	
+	private JLabel labelErrorMessage;
 	private JComboBox<String> comboBox = new JComboBox<>();
 	
 	public CustomerFilterView()
@@ -61,6 +65,19 @@ public class CustomerFilterView
 		jtbl.setDefaultEditor(Object.class, null);
 		jtbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
+		labelErrorMessage = new JLabel("");
+		labelErrorMessage.setVisible(false);
+		labelErrorMessage.setBounds(51, 354, 150, 20);
+		labelErrorMessage.setForeground(Color.RED);
+		customerFilterView.getContentPane().add(labelErrorMessage);
+		
+		deleteCustomerBtn = new JButton(Config.DELETE_INVOICE_STRING);
+		deleteCustomerBtn.setForeground(Color.BLACK);
+		deleteCustomerBtn.setFont(new Font("Tahoma", Font.BOLD, 12));
+		deleteCustomerBtn.setBackground(Color.LIGHT_GRAY);
+		deleteCustomerBtn.setBounds(51, 400, 150, 50);
+		customerFilterView.getContentPane().add(deleteCustomerBtn);
+		
 		customerFilterView.setVisible(true);
 		Config.LOGGER.log(Level.INFO, "Created CustomerViewFrame.");
 	}
@@ -78,6 +95,17 @@ public class CustomerFilterView
 	public JButton getViewCustomerBtn()
 	{
 		return viewCustomerBtn;
+	}
+	
+	public JButton getDeleteCustomerBtn()
+	{
+		return deleteCustomerBtn;
+	}
+	
+	public void setErrorMessage(String error)
+	{
+		labelErrorMessage.setText(error);
+		labelErrorMessage.setVisible(true);
 	}
 	
 	public JComboBox<String> getComboBox()
