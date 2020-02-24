@@ -8,11 +8,18 @@ import danonek.Config;
 
 public class Add 
 {	
+	/**
+	 * addCustomer adds a customer to the database.
+	 * @param name
+	 * @param surname
+	 * @param address
+	 * @param phone
+	 */
 	public void addCustomer(String name, String surname, String address, int phone)
 	{
 		String sql = "INSERT INTO " + Config.TABLES[0] + " (" + Config.CUSTOMER_NAME + ", " + Config.CUSTOMER_SURNAME + ", " + Config.CUSTOMER_ADDRESS + ", " + Config.CUSTOMER_PHONE + ") VALUES (?, ?, ?, ?)";
 		 
-		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		try (PreparedStatement pstmt = Config.DB_CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setString(1, name);
 			pstmt.setString(2, surname);
@@ -26,11 +33,18 @@ public class Add
 		}
 	}
 	
+	/**
+	 * addProduct adds a product to the database.
+	 * @param name
+	 * @param description
+	 * @param quantity
+	 * @param cost
+	 */
 	public void addProduct(String name, String description, int quantity, double cost)
 	{
 		String sql = "INSERT INTO " + Config.TABLES[2] + " (" + Config.PRODUCT_NAME + ", " + Config.PRODUCT_DESCRIPTION + ", " + Config.PRODUCT_QUANTITY + ", " + Config.PRODUCT_UNIT_COST + ") VALUES (?, ?, ?, ?)";
 		 
-		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		try (PreparedStatement pstmt = Config.DB_CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setString(1, name);
 			pstmt.setString(2, description);
@@ -44,11 +58,18 @@ public class Add
 		}
 	}
 	
+	/**
+	 * addInvoice adds an invoice to the database.
+	 * @param customerId
+	 * @param productId
+	 * @param productName
+	 * @param productQuantity
+	 */
 	public void addInvoice(int customerId, int productId, String productName, int productQuantity)
 	{
 		String sql = "INSERT INTO " + Config.TABLES[1] + " (" + Config.CUSTOMER_ID + ", " + Config.PRODUCT_ID + ", " + Config.PRODUCT_NAME + ", " + Config.PRODUCT_QUANTITY + ") VALUES (?, ?, ?, ?)";
 		
-		try (PreparedStatement pstmt = Config.CONNECTION.prepareStatement(sql)) 
+		try (PreparedStatement pstmt = Config.DB_CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setInt(1, customerId);
 			pstmt.setInt(2, productId);

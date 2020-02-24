@@ -16,7 +16,7 @@ import danonek.Config;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
-public class CustomerFilterView
+public class InvoiceViewFrame
 {
 	// Variables
 	private JFrame customerFilterView;
@@ -30,10 +30,10 @@ public class CustomerFilterView
 	private JLabel labelErrorMessage;
 	private JComboBox<String> comboBox = new JComboBox<>();
 	
-	public CustomerFilterView()
+	public InvoiceViewFrame()
 	{
 		// Creating the Frame
-		customerFilterView = new JFrame(Config.CUSTOMER_FILTER_FRAME_TITLE);
+		customerFilterView = new JFrame(Config.INVOICE_VIEW_FRAME_TITLE);
 		customerFilterView.getContentPane().setBackground(Color.WHITE);
 		customerFilterView.getContentPane().setLayout(null);
 		customerFilterView.setSize(700, 500);

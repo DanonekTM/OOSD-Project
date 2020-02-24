@@ -14,29 +14,19 @@ import danonek.Interface.*;
 
 public class Program 
 {
+	/**
+	 * This is the main function of the program.
+	 */
 	void run()
 	{
+		// Initializes the main frame of the program and database.
 		MainFrame mainFrame = new MainFrame();
 		DatabaseController db = new DatabaseController();
-		
-		// Testing Purposes
-		db.addCustomer("TEST NAME", "TEST SURNAME", "TEST ADD", 1);
-		db.addCustomer("TEST NAME", "TEST SURNAME", "TEST ADD", 2);
-		db.addProduct("TESTPROD", "TESTPROD", 2, 12.50);
-		db.addProduct("TESTPROD", "TESTPROD", 4, 13.50);
-		db.addInvoice(1, 1, "TESTPROD", 3);
-		db.addInvoice(1, 1, "TESTPROD", 3);
-		db.addInvoice(1, 1, "TESTPROD", 3);
-		db.addInvoice(1, 1, "TESTPROD", 3);
-		db.addInvoice(1, 1, "TESTPROD", 3);
-		db.addInvoice(1, 1, "TESTPROD", 3);
-		db.addInvoice(2, 1, "TESTPROD", 3);
-
 		
 		// Lambda listeners for each button
 		mainFrame.getAddCustomerBtn().addActionListener(e ->
 		{
-			// Init Frame
+			// Initialize Frame
 			CustomerAddFrame caf = new CustomerAddFrame();
 			
 			// Get Text & Insert To DB on click
@@ -71,13 +61,85 @@ public class Program
 		
 		mainFrame.getAddInvoiceBtn().addActionListener(e ->
 		{
+			// Initializes Frame
+			InvoiceAddFrame iaf = new InvoiceAddFrame();
+			
+			TreeMap<Integer,String> customerMap = new TreeMap<>();
+			TreeMap<Integer,String> productMap = new TreeMap<>();
+			List<String> customerList = new ArrayList<>();
+			List<String> productList = new ArrayList<>();
+			
+			try
+			{
+				ResultSet rs = db.getAllFromCustomerAndProducts();
+				while (rs.next())
+				{
+					customerMap.put(rs.getInt(Config.CUSTOMER_ID), rs.getString(Config.CUSTOMER_NAME));
+					productMap.put(rs.getInt(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME));
+				}
+			}
+			catch (Exception ex)
+			{
+				Config.LOGGER.log(Level.INFO, ex.getMessage());
+			}
+			
+			for (Map.Entry<Integer, String> m : customerMap.entrySet())
+			{
+				String entry = m.getKey() + " - " + m.getValue();
+				customerList.add(entry);
+			}
+			
+			for (Map.Entry<Integer, String> m : productMap.entrySet())
+			{
+				String entry = m.getKey() + " - " + m.getValue();
+				productList.add(entry);
+			}
+			
+			String[] customerArr = customerList.toArray(new String[customerList.size()]);
+			String[] productArr = productList.toArray(new String[productList.size()]);
+			
+			iaf.getCustomerNameBox().setModel(new DefaultComboBoxModel<>(customerArr));
+			iaf.getProductNameBox().setModel(new DefaultComboBoxModel<>(productArr));
+			
+			// Get Text & Insert To DB on click
+			iaf.getBtnAddInvoice().addActionListener(a ->
+			{
+				StringTokenizer stCn = new StringTokenizer(String.valueOf(iaf.getCustomerNameBox().getSelectedItem()));
+				int customerIdField = 0;
+				if (stCn.hasMoreTokens()) 
+				{
+					customerIdField = Integer.parseInt(stCn.nextToken());
+			    }
+				StringTokenizer stPn = new StringTokenizer(String.valueOf(iaf.getProductNameBox().getSelectedItem()), " - ");
+				int productId = 0; 
+				String productName = null;
+				if (stPn.hasMoreTokens()) 
+				{
+					productId = Integer.parseInt(stPn.nextToken());
+					productName = stPn.nextToken();
+			    }
+				
+				String productQuantityField = iaf.getTextFieldQuantity().getText();
+				
+				try
+				{
+					int quantity = Integer.parseInt(productQuantityField.trim());
+
+					db.addInvoice(customerIdField, productId, productName, quantity);
+					iaf.getFrame().dispose();
+				}
+				catch (NumberFormatException nfe)
+				{
+					iaf.setErrorMessage("* Quantity must be a number!");
+				}
+			});
 			
 		});
 
 		
 		mainFrame.getAddProductBtn().addActionListener(e ->
 		{
-			// Init Frame
+			// Initializes Frame
 			ProductAddFrame paf = new ProductAddFrame();
 			
 			// Get Text & Insert To DB on click
@@ -112,6 +174,7 @@ public class Program
 
 		mainFrame.getViewCustomerBtn().addActionListener(e -> 
 		{
+			// Initializes Frame
 			CustomerViewFrame customerView = new CustomerViewFrame();
 
 			try 
@@ -145,7 +208,8 @@ public class Program
 		
 		mainFrame.getViewInvoiceBtn().addActionListener(e ->
 		{
-			CustomerFilterView customerFilterView = new CustomerFilterView();
+			// Initializes Frame
+			InvoiceViewFrame invoiceViewFrame = new InvoiceViewFrame();
 			
 			TreeMap<Integer,String> customerMap = new TreeMap<>();
 			List<String> invoiceList = new ArrayList<>();
@@ -171,16 +235,25 @@ public class Program
 			
 			String[] invoicesArr = invoiceList.toArray(new String[invoiceList.size()]);
 			
-			customerFilterView.getComboBox().setModel(new DefaultComboBoxModel<>(invoicesArr));
+			if (invoicesArr.length <= 0)
+			{
+				invoiceViewFrame.getComboBox().setVisible(false);
+				invoiceViewFrame.setErrorMessage("* Add An Entry first");
+			}
+			else
+			{
+				invoiceViewFrame.getComboBox().setVisible(true);
+				invoiceViewFrame.getComboBox().setModel(new DefaultComboBoxModel<>(invoicesArr));
+			}
 			
-			customerFilterView.getViewCustomerBtn().addActionListener(g ->
+			invoiceViewFrame.getViewCustomerBtn().addActionListener(g ->
 			{
 				try
 				{
-					customerFilterView.getTableModel().getDataVector().removeAllElements();
-					customerFilterView.getTableModel().fireTableDataChanged();
+					invoiceViewFrame.getTableModel().getDataVector().removeAllElements();
+					invoiceViewFrame.getTableModel().fireTableDataChanged();
 					
-					StringTokenizer st = new StringTokenizer(String.valueOf(customerFilterView.getComboBox().getSelectedItem()));
+					StringTokenizer st = new StringTokenizer(String.valueOf(invoiceViewFrame.getComboBox().getSelectedItem()));
 					int id = 0; 
 					if (st.hasMoreTokens()) 
 					{
@@ -189,26 +262,26 @@ public class Program
 					ResultSet rs = db.getInvoicesByCustomerId(id);
 					while (rs.next())
 					{
-						customerFilterView.getTableModel().addRow(new Object[]{rs.getString(Config.INVOICE_ID), rs.getString(Config.CUSTOMER_ID), rs.getString(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME), rs.getString(Config.PRODUCT_QUANTITY)});
+						invoiceViewFrame.getTableModel().addRow(new Object[]{rs.getString(Config.INVOICE_ID), rs.getString(Config.CUSTOMER_ID), rs.getString(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME), rs.getString(Config.PRODUCT_QUANTITY)});
 					}
 				}
 				catch (Exception ex)
 				{
-					Config.LOGGER.log(Level.INFO, ex.getMessage());
+					invoiceViewFrame.setErrorMessage("* Select an entry first!");
 				}
 			});
 			
-			customerFilterView.getDeleteCustomerBtn().addActionListener(x ->
+			invoiceViewFrame.getDeleteCustomerBtn().addActionListener(x ->
 			{
 				try
 				{
-					int id = Integer.parseInt((customerFilterView.getJTable().getValueAt(customerFilterView.getJTable().getSelectedRow(), 0).toString().trim()));
+					int id = Integer.parseInt((invoiceViewFrame.getJTable().getValueAt(invoiceViewFrame.getJTable().getSelectedRow(), 0).toString().trim()));
 					db.deleteInvoiceById(id);
-					customerFilterView.getTableModel().removeRow(customerFilterView.getJTable().getSelectedRow());
+					invoiceViewFrame.getTableModel().removeRow(invoiceViewFrame.getJTable().getSelectedRow());
 				}
 				catch (Exception ex)
 				{
-					customerFilterView.setErrorMessage("* Select an entry first!");
+					invoiceViewFrame.setErrorMessage("* Select an entry first!");
 				}
 			});
 			
@@ -216,6 +289,7 @@ public class Program
 		
 		mainFrame.getViewProductBtn().addActionListener(e ->
 		{
+			// Initializes Frame
 			ProductViewFrame productView = new ProductViewFrame();
 
 			try 

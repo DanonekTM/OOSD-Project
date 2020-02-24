@@ -67,17 +67,17 @@ public class ProductAddFrame
 
 		textFieldProductQuantity = new JTextField();
 		textFieldProductQuantity.setColumns(10);
-		textFieldProductQuantity.setBounds(162, 125, 195, 45);
+		textFieldProductQuantity.setBounds(162, 125, 195, 20);
 		addProductFrame.getContentPane().add(textFieldProductQuantity);
 
 		LabelProductUnitCost = new JLabel(Config.PRODUCT_UNIT_COST_STRING);
 		LabelProductUnitCost.setFont(new Font(Config.FONT_NAME, Font.BOLD, 12));
-		LabelProductUnitCost.setBounds(24, 187, 128, 14);
+		LabelProductUnitCost.setBounds(24, 172, 128, 14);
 		addProductFrame.getContentPane().add(LabelProductUnitCost);
 
 		textFieldProductUnitPrice = new JTextField();
 		textFieldProductUnitPrice.setColumns(10);
-		textFieldProductUnitPrice.setBounds(162, 187, 195, 20);
+		textFieldProductUnitPrice.setBounds(162, 172, 195, 20);
 		addProductFrame.getContentPane().add(textFieldProductUnitPrice);
 
 		labelErrorMessage = new JLabel("");

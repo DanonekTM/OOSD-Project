@@ -29,6 +29,7 @@ public class CustomerAddFrame
 
 	
 	private JButton btnAddCustomer;
+	private JTextField textField;
 	
 	public CustomerAddFrame()
 	{	
@@ -69,17 +70,17 @@ public class CustomerAddFrame
 		
 		textFieldCustomerAddress = new JTextField();
 		textFieldCustomerAddress.setColumns(10);
-		textFieldCustomerAddress.setBounds(162, 125, 195, 51);
+		textFieldCustomerAddress.setBounds(162, 123, 195, 20);
 		customerAddFrame.getContentPane().add(textFieldCustomerAddress);
 		
 		labelCustomerPhone = new JLabel(Config.CUSTOMER_PHONE_STRING);
 		labelCustomerPhone.setFont(new Font(Config.FONT_NAME, Font.BOLD, 12));
-		labelCustomerPhone.setBounds(24, 187, 128, 14);
+		labelCustomerPhone.setBounds(24, 171, 128, 14);
 		customerAddFrame.getContentPane().add(labelCustomerPhone);
 		
 		textFieldCustomerPhone = new JTextField();
 		textFieldCustomerPhone.setColumns(10);
-		textFieldCustomerPhone.setBounds(162, 187, 195, 20);
+		textFieldCustomerPhone.setBounds(162, 171, 195, 20);
 		customerAddFrame.getContentPane().add(textFieldCustomerPhone);
 		
 		labelErrorMessage = new JLabel("");

@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class Config
 {
 	// Variables
-	public static Connection CONNECTION = null;
+	public static Connection DB_CONNECTION = null;
 	public static final String DB_PATH = "jdbc:sqlite:project.db";
 	public static final Logger LOGGER = Logger.getGlobal();
 	
@@ -38,53 +38,38 @@ public class Config
 	public static final String FONT_NAME = "Tahoma";
 
 	// Main Strings
-	public static final String MAIN_FRAME_TITLE = "Invoice Managment";
-
 	public static final String ADD_INVOICE_STRING = "Add Invoice";
 	public static final String ADD_CUSTOMER_STRING = "Add Customer";
 	public static final String ADD_PRODUCT_STRING = "Add Product";
-	
 	public static final String DELETE_CUSTOMER_STRING = "Delete Customer";
 	public static final String DELETE_PRODUCT_STRING = "Delete Product";
-
 	public static final String VIEW_PRODUCT_STRING = "View Product";
 	public static final String VIEW_CUSTOMER_STRING = "View Customer";
 	public static final String VIEW_INVOICE_STRING = "View Invoice";
-	
-	// Strings For CustomerAddFrame
-	public static final String CUSTOMER_ADD_FRAME_TITLE = "Add Customer Form";
-
 	public static final String CUSTOMER_ID_STRING = "Customer ID";
 	public static final String CUSTOMER_NAME_STRING = "Customer Name";
 	public static final String CUSTOMER_SURNAME_STRING = "Customer Surname";
 	public static final String CUSTOMER_ADDRESS_STRING = "Customer Address";
 	public static final String CUSTOMER_PHONE_STRING = "Customer Phone";
-
-	// Strings for ProductAddFrame
-	public static final String PRODUCT_ADD_FRAME_TITLE = "Add Product Form";
-
 	public static final String PRODUCT_ID_STRING = "Product ID";
 	public static final String PRODUCT_NAME_STRING = "Product Name";
 	public static final String PRODUCT_DESCRIPTION_STRING = "Product Description";
 	public static final String PRODUCT_QUANTITY_STRING = "Product Quantity";
 	public static final String PRODUCT_UNIT_COST_STRING = "Product Unit Cost";
-	
-	// Strings For InvoiceAddFrame
-	public static final String INVOICE_ADD_FRAME_TITLE = "Add Invoice Form";
 	public static final String INVOICE_ID_STRING = "Invoice ID";
-	
-	
 	public static final String DELETE_INVOICE_STRING = "Delete Invoice";
 	
-	// Strings For CustomerViewFrame
+	// Strings For Frames
+	public static final String MAIN_FRAME_TITLE = "Invoice Managment";
 	public static final String CUSTOMER_VIEW_FRAME_TITLE = "View Customer Window";
-	
+	public static final String INVOICE_ADD_FRAME_TITLE = "Add Invoice Form";
 	public static final String PRODUCT_VIEW_FRAME_TITLE = "View Product Window";
-	
-	public static final String CUSTOMER_FILTER_FRAME_TITLE = "Filter Customer Window";
+	public static final String PRODUCT_ADD_FRAME_TITLE = "Add Product Form";
+	public static final String CUSTOMER_ADD_FRAME_TITLE = "Add Customer Form";
+	public static final String INVOICE_VIEW_FRAME_TITLE = "View Invoice Window";
 	
 	public Config()
 	{
-		// Empty boi
+		// Empty constructor since all variables are static.
 	}
 }

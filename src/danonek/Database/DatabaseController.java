@@ -15,11 +15,14 @@ public class DatabaseController
 	private Delete Delete = new Delete();
 	private Update Update = new Update();
 	
+	/**
+	 * Constructs DB connection with the specified path from the configuration file.
+	 */
 	public DatabaseController()
 	{
 		try
 		{
-			Config.CONNECTION = DriverManager.getConnection(Config.DB_PATH);
+			Config.DB_CONNECTION = DriverManager.getConnection(Config.DB_PATH);
 			
 			Config.LOGGER.log(Level.INFO, "Connection Established.");
 			this.setup();
@@ -29,10 +32,12 @@ public class DatabaseController
 			Config.LOGGER.log(Level.INFO, e.getMessage());
 		}
 	}
-	
+	/**
+	 * Sets up a database statement, drops existing databases and builds the database again
+	 */
 	public void setup() throws SQLException
 	{
-		Statement statement = Config.CONNECTION.createStatement();
+		Statement statement = Config.DB_CONNECTION.createStatement();
 
 		for (String table: Config.TABLES)
 		{
@@ -49,6 +54,10 @@ public class DatabaseController
 			
 		Config.LOGGER.log(Level.INFO, "Database created.");
 	}
+	
+	/**
+	 * All functions below link functions from files together for easier access.
+	 */
 
 	/*
 		    _       _     _
@@ -134,6 +143,11 @@ public class DatabaseController
 	public ResultSet getInvoicesByCustomerId(int id) throws SQLException
 	{
 		return Get.getInvoicesByCustomerId(id);
+	}
+	
+	public ResultSet getAllFromCustomerAndProducts() throws SQLException
+	{
+		return Get.getAllFromCustomerAndProducts();
 	}
 	
 	public ResultSet getInvoicesByProductId(int id) throws SQLException
