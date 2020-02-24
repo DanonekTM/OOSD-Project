@@ -23,20 +23,22 @@ public class Program
 		MainFrame mainFrame = new MainFrame();
 		DatabaseController db = new DatabaseController();
 		
-		// Lambda listeners for each button
+		// Lambda listener for Add Customer button.
 		mainFrame.getAddCustomerBtn().addActionListener(e ->
 		{
-			// Initialize Frame
+			// Initialize Frame.
 			CustomerAddFrame caf = new CustomerAddFrame();
 			
-			// Get Text & Insert To DB on click
+			// Get Text & Insert To DB on click on Add Customer Button.
 			caf.getBtnAddCustomer().addActionListener(a ->
 			{
+				// Set variables equal to the gui text fields.
 				String customerNameField = caf.getTextFieldCustomerName().getText();
 				String customerSurnameField = caf.getTextFieldCustomerSurname().getText();
 				String customerAddressField = caf.getTextFieldCustomerAddress().getText();
 				String customerPhoneField = caf.getTextFieldCustomerPhone().getText();
 				
+				// Check if the fields are empty.
 				if (customerNameField.isEmpty() || customerSurnameField.isEmpty() || customerAddressField.isEmpty() || customerPhoneField.isEmpty())
 				{
 					caf.setErrorMessage("* Fill out all fields!");
@@ -45,13 +47,18 @@ public class Program
 				{
 					try
 					{
+						// Trim the integer value for the phone.
 						int customerPhone = Integer.parseInt(customerPhoneField.trim());
 
+						// Insert it into the database.
 						db.addCustomer(customerNameField, customerSurnameField, customerAddressField, customerPhone);
+						
+						// Close the frame.
 						caf.getFrame().dispose();
 					}
 					catch (NumberFormatException nfe)
 					{
+						// Set an error if the phone number isn't a number.
 						caf.setErrorMessage("* Phone number must be a number!");
 					}
 				}
@@ -59,19 +66,24 @@ public class Program
 
 		});
 		
+		// Lambda listener for Add Invoice button.
 		mainFrame.getAddInvoiceBtn().addActionListener(e ->
 		{
-			// Initializes Frame
+			// Initializes Frame.
 			InvoiceAddFrame iaf = new InvoiceAddFrame();
 			
+			// Create 2 TreeMaps to store id and names for customer & product.
 			TreeMap<Integer,String> customerMap = new TreeMap<>();
 			TreeMap<Integer,String> productMap = new TreeMap<>();
+			// 2 lists to later convert to array for JComboBox.
 			List<String> customerList = new ArrayList<>();
 			List<String> productList = new ArrayList<>();
 			
 			try
 			{
+				// Get all the data needed from the database.
 				ResultSet rs = db.getAllFromCustomerAndProducts();
+				// While there still is rows in the ResultSet add the Id's and names into the TreeMaps.
 				while (rs.next())
 				{
 					customerMap.put(rs.getInt(Config.CUSTOMER_ID), rs.getString(Config.CUSTOMER_NAME));
@@ -83,54 +95,66 @@ public class Program
 				Config.LOGGER.log(Level.INFO, ex.getMessage());
 			}
 			
+			// Loop for customer TreeMap.
 			for (Map.Entry<Integer, String> m : customerMap.entrySet())
 			{
 				String entry = m.getKey() + " - " + m.getValue();
 				customerList.add(entry);
 			}
 			
+			// Loop for product TreeMap.
 			for (Map.Entry<Integer, String> m : productMap.entrySet())
 			{
 				String entry = m.getKey() + " - " + m.getValue();
 				productList.add(entry);
 			}
 			
+			// Convert the lists into arrays.
 			String[] customerArr = customerList.toArray(new String[customerList.size()]);
 			String[] productArr = productList.toArray(new String[productList.size()]);
 			
+			// Set the arrays into the relevant combo boxes in the gui.
 			iaf.getCustomerNameBox().setModel(new DefaultComboBoxModel<>(customerArr));
 			iaf.getProductNameBox().setModel(new DefaultComboBoxModel<>(productArr));
 			
 			// Get Text & Insert To DB on click
 			iaf.getBtnAddInvoice().addActionListener(a ->
 			{
-				StringTokenizer stCn = new StringTokenizer(String.valueOf(iaf.getCustomerNameBox().getSelectedItem()));
-				int customerIdField = 0;
-				if (stCn.hasMoreTokens()) 
+				// Check if the combo boxes are empty.
+				if (iaf.getCustomerNameBox().getSelectedItem() != null || iaf.getProductNameBox().getSelectedItem() != null)
 				{
-					customerIdField = Integer.parseInt(stCn.nextToken());
-			    }
-				StringTokenizer stPn = new StringTokenizer(String.valueOf(iaf.getProductNameBox().getSelectedItem()), " - ");
-				int productId = 0; 
-				String productName = null;
-				if (stPn.hasMoreTokens()) 
-				{
-					productId = Integer.parseInt(stPn.nextToken());
-					productName = stPn.nextToken();
-			    }
-				
-				String productQuantityField = iaf.getTextFieldQuantity().getText();
-				
-				try
-				{
-					int quantity = Integer.parseInt(productQuantityField.trim());
+					StringTokenizer stCn = new StringTokenizer(String.valueOf(iaf.getCustomerNameBox().getSelectedItem()));
+					int customerIdField = 0;
+					if (stCn.hasMoreTokens()) 
+					{
+						customerIdField = Integer.parseInt(stCn.nextToken());
+				    }
+					StringTokenizer stPn = new StringTokenizer(String.valueOf(iaf.getProductNameBox().getSelectedItem()), " - ");
+					int productId = 0; 
+					String productName = null;
+					if (stPn.hasMoreTokens()) 
+					{
+						productId = Integer.parseInt(stPn.nextToken());
+						productName = stPn.nextToken();
+				    }
+					
+					String productQuantityField = iaf.getTextFieldQuantity().getText();
+					
+					try
+					{
+						int quantity = Integer.parseInt(productQuantityField.trim());
 
-					db.addInvoice(customerIdField, productId, productName, quantity);
-					iaf.getFrame().dispose();
+						db.addInvoice(customerIdField, productId, productName, quantity);
+						iaf.getFrame().dispose();
+					}
+					catch (NumberFormatException nfe)
+					{
+						iaf.setErrorMessage("* Quantity must be a number!");
+					}
 				}
-				catch (NumberFormatException nfe)
+				else
 				{
-					iaf.setErrorMessage("* Quantity must be a number!");
+					iaf.setErrorMessage("* Select a product and customer!");
 				}
 			});
 			
@@ -238,7 +262,7 @@ public class Program
 			if (invoicesArr.length <= 0)
 			{
 				invoiceViewFrame.getComboBox().setVisible(false);
-				invoiceViewFrame.setErrorMessage("* Add An Entry first");
+				invoiceViewFrame.setErrorMessage("* Add An Entry first!");
 			}
 			else
 			{

@@ -27,9 +27,8 @@ public class CustomerAddFrame
 	private JTextField textFieldCustomerAddress;
 	private JTextField textFieldCustomerPhone;
 
-	
 	private JButton btnAddCustomer;
-	private JTextField textField;
+
 	
 	public CustomerAddFrame()
 	{	
