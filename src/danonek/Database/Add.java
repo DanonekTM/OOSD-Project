@@ -18,7 +18,7 @@ public class Add
 	public void addCustomer(String name, String surname, String address, int phone)
 	{
 		String sql = "INSERT INTO " + Config.TABLES[0] + " (" + Config.CUSTOMER_NAME + ", " + Config.CUSTOMER_SURNAME + ", " + Config.CUSTOMER_ADDRESS + ", " + Config.CUSTOMER_PHONE + ") VALUES (?, ?, ?, ?)";
-		 
+		
 		try (PreparedStatement pstmt = Config.DB_CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setString(1, name);
@@ -43,7 +43,7 @@ public class Add
 	public void addProduct(String name, String description, int quantity, double cost)
 	{
 		String sql = "INSERT INTO " + Config.TABLES[2] + " (" + Config.PRODUCT_NAME + ", " + Config.PRODUCT_DESCRIPTION + ", " + Config.PRODUCT_QUANTITY + ", " + Config.PRODUCT_UNIT_COST + ") VALUES (?, ?, ?, ?)";
-		 
+		
 		try (PreparedStatement pstmt = Config.DB_CONNECTION.prepareStatement(sql)) 
 		{
 			pstmt.setString(1, name);
