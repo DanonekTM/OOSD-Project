@@ -348,12 +348,6 @@ public class Program
 						// Add all the information into the table.
 						invoiceViewFrame.getTableModel().addRow(new Object[]{rs.getString(Config.INVOICE_ID), rs.getString(Config.CUSTOMER_ID), rs.getString(Config.PRODUCT_ID), rs.getString(Config.PRODUCT_NAME), rs.getString(Config.PRODUCT_QUANTITY)});
 					}
-
-					// If the result set was null show an error.
-					if (rs.wasNull())
-					{
-						invoiceViewFrame.setErrorMessage("* No invoices found!");
-					}
 				}
 				catch (Exception ex)
 				{
