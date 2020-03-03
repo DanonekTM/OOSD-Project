@@ -10,7 +10,7 @@ Damian's and Daniel's 2nd Year OOSD Project
 * Java Swing
 
 ## GIF
-![Screencast](https://raw.githubusercontent.com/DanonekTM/OOSD-Project/master/res/OOP%20Project.gif?token=AF43XOPAIXTAI5H2LFZBGHK6LXBSE)
+![Screencast](https://i.imgur.com/z4QtG1J.gif)
 
 C00237358  
 C00243087
