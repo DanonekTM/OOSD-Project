@@ -12,7 +12,7 @@ public class Get
 {
 	/**
 	 * getCustomerNameById returns customer name by given customer id.
-	 * @param id
+	 * @param id Customer id.
 	 * @return customer name or null if customer not found.
 	 */
 	public String getCustomerNameById(int id)
@@ -34,7 +34,7 @@ public class Get
 	
 	/**
 	 * getCustomerSurnameById returns customer surname with the given id.
-	 * @param id
+	 * @param id Customer id.
 	 * @return customer surname or null if not customer not found.
 	 */
 	public String getCustomerSurnameById(int id)
@@ -56,7 +56,7 @@ public class Get
 	
 	/**
 	 * getProductNameById returns product name by given product id.
-	 * @param id
+	 * @param id Product Id
 	 * @return product name with the given id or null if not found.
 	 */
 	public String getProductNameById(int id)
@@ -78,7 +78,7 @@ public class Get
 	
 	/**
 	 * getInvoicesByCustomerId returns all invoices based on the given customer id.
-	 * @param id
+	 * @param id Customer Id.
 	 * @return ResultSet of all invoices that have the given customer id.
 	 * @throws SQLException
 	 */
@@ -91,7 +91,7 @@ public class Get
 	
 	/**
 	 * getInvoicesByProductId returns all invoices based on the given product id.
-	 * @param id
+	 * @param id Product id.
 	 * @return ResultSet of all invoices that have the given product id.
 	 * @throws SQLException
 	 */

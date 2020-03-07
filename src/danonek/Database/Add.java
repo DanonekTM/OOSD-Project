@@ -10,10 +10,10 @@ public class Add
 {	
 	/**
 	 * addCustomer adds a customer to the database.
-	 * @param name
-	 * @param surname
-	 * @param address
-	 * @param phone
+	 * @param name Name of the Customer.
+//	 * @param surname Surname of the Customer.
+	 * @param address Address of the Customer.
+	 * @param phone Phone number of the Customer.
 	 */
 	public void addCustomer(String name, String surname, String address, int phone)
 	{
@@ -35,10 +35,10 @@ public class Add
 	
 	/**
 	 * addProduct adds a product to the database.
-	 * @param name
-	 * @param description
-	 * @param quantity
-	 * @param cost
+	 * @param name Name of the product.
+	 * @param description Description of the product.
+	 * @param quantity Quantity of the product.
+	 * @param cost Cost of the product per unit.
 	 */
 	public void addProduct(String name, String description, int quantity, double cost)
 	{
@@ -60,10 +60,10 @@ public class Add
 	
 	/**
 	 * addInvoice adds an invoice to the database.
-	 * @param customerId
-	 * @param productId
-	 * @param productName
-	 * @param productQuantity
+	 * @param customerId Customer Id.
+	 * @param productId Product Id.
+	 * @param productName Product Name
+	 * @param productQuantity Product Quantity.
 	 */
 	public void addInvoice(int customerId, int productId, String productName, int productQuantity)
 	{

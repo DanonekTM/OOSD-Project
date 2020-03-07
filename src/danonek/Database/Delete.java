@@ -10,7 +10,7 @@ public class Delete
 {	
 	/**
 	 * deleteCustomerById deletes a customer with the given id from the database.
-	 * @param id
+	 * @param id customer Id.
 	 */
 	public void deleteCustomerById(int id)
 	{
@@ -29,7 +29,7 @@ public class Delete
 	
 	/**
 	 * deleteProductById deletes a product with the given id from the database.
-	 * @param id
+	 * @param id Product id.
 	 */
 	public void deleteProductById(int id)
 	{
@@ -48,7 +48,7 @@ public class Delete
 	
 	/**
 	 * deleteInvoiceById deletes a invoice with the given id from the database.
-	 * @param id
+	 * @param id Invoice id.
 	 */
 	public void deleteInvoiceById(int id)
 	{
@@ -67,7 +67,7 @@ public class Delete
 	
 	/**
 	 * deleteInvoicesByCustomerId deletes all invoices from the database based on the customer id.
-	 * @param id
+	 * @param id Customer id.
 	 */
 	public void deleteInvoicesByCustomerId(int id)
 	{
@@ -86,7 +86,7 @@ public class Delete
 	
 	/**
 	 * deleteInvoicesByProductId deletes all invoices from the database based on the product id.
-	 * @param id
+	 * @param id Product Id.
 	 */
 	public void deleteInvoicesByProductId(int id)
 	{

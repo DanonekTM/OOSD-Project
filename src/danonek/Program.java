@@ -63,7 +63,6 @@ public class Program
 					}
 				}
 			});
-
 		});
 		
 		// Lambda listener for Add Invoice button.
@@ -115,7 +114,7 @@ public class Program
 			String[] customerArr = customerList.toArray(new String[customerList.size()]);
 			String[] productArr = productList.toArray(new String[productList.size()]);
 			
-			// Set the arrays into the relevant combo boxes in the gui.
+			// Set the arrays into the relevant combo boxes in the GUI.
 			iaf.getCustomerNameBox().setModel(new DefaultComboBoxModel<>(customerArr));
 			iaf.getProductNameBox().setModel(new DefaultComboBoxModel<>(productArr));
 			
@@ -405,7 +404,7 @@ public class Program
 			{
 				try
 				{
-					// Set id to the selected row and trim it down so there is no whitespaces.
+					// Set id to the selected row and trim it down so there is no white spaces.
 					int id = Integer.parseInt((productView.getJTable().getValueAt(productView.getJTable().getSelectedRow(), 0).toString().trim()));
 
 					// Delete the product by id from the database.
